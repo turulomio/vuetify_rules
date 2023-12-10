@@ -6,10 +6,8 @@
 // TO improve readibility I will emule rules behavier
 // Rules returns [] when everything is ok, returns a ['comment'] to show error
 
-import moment from 'moment'
 
-
-
+import { isNullOrEmpty } from "./functions"
 
 export function RulesInteger(maxdigits,required){
     var r

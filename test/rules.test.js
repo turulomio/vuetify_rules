@@ -1,4 +1,4 @@
-import { expect, test } from 'vitest'
+
 import { 
     countDecimals,
     isNullOrEmpty,
@@ -12,7 +12,7 @@ import {
     RulesFloatLEZ,
     RulesDateIsoString,
     RulesDatetimeAwareIsoString,
-} from "@/rules"
+} from "./index.js"
 
 
 // Due to problems with translations I made this function to help i18n

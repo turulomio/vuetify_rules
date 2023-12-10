@@ -1,9 +1,7 @@
-import { expect, test } from 'vitest'
-
 import {
     my_round,
     localtime,
-} from '@/my_commons'
+} from 'index.js'
 
 test('my_round', () => {
     expect(my_round(1.99, 2)).toBe(1.99)
