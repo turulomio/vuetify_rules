@@ -1,4 +1,7 @@
 import { vuetify_rules } from '../index.js';
+
+//Coverage of the test not of the module
+
 import assert from "assert"
 
 describe("Functions", () => {
