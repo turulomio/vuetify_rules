@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "description": "Rules and functions necessary to validate forms in vuetify",
   "main": "index.js",
-  "scripts": {
-    "test": "jest"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/turulomio/vuetify_rules.git"
@@ -24,8 +21,5 @@
   "homepage": "https://github.com/turulomio/vuetify_rules#readme",
   "dependencies": {
     "moment-timezone": "^0.5.43"
-  },
-  "devDependencies": {
-    "jest": "^29.7.0"
   }
 }
