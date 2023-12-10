@@ -1,94 +1,93 @@
 import { 
-    isNullOrEmpty,
-    localtime,
-    capitalizeFirstLetter,
-    parseNumber,
-    ifnullempty,
-    isNumber,
-    isNumberWithRequired,
-    isNumberMaxDigitsWithRequired,
-    countDecimals,
-    translate,
-    isDateIsoString,
-    isDatetimeAwareIsoString,
-    isStringWithMaxDigits,
-    f,
-    my_round,
+    isNullOrEmpty as f_isNullOrEmpty,
+    localtime as f_localtime,
+    capitalizeFirstLetter as f_capitalizeFirstLetter,
+    parseNumber as f_parseNumber,
+    ifnullempty as f_ifnullempty,
+    isNumber as f_isNumber,
+    isNumberWithRequired as f_isNumberWithRequired,
+    isNumberMaxDigitsWithRequired as f_isNumberMaxDigitsWithRequired,
+    countDecimals as f_countDecimals,
+    translate as f_translate,
+    isDateIsoString as f_isDateIsoString,
+    isDatetimeAwareIsoString as f_isDatetimeAwareIsoString,
+    isStringWithMaxDigits as f_isStringWithMaxDigits,
+    f as f_f,
+    my_round as f_my_round
 } from "./src/functions.js";
 
 import { 
-    RulesDate,
-    RulesDateIsoString,
-    RulesDatetime,
-    RulesDatetimeAwareIsoString,
-    RulesEmail,
-    RulesFloat,
-    RulesFloatGEZ,
-    RulesFloatGZ,
-    RulesFloatLEZ,
-    RulesInteger,
-    RulesPassword,
-    RulesSelection,
-    RulesString,
+    RulesDate as f_RulesDate,
+    RulesDateIsoString as f_RulesDateIsoString,
+    RulesDatetime as f_RulesDatetime,
+    RulesDatetimeAwareIsoString as f_RulesDatetimeAwareIsoString,
+    RulesEmail as f_RulesEmail,
+    RulesFloat as f_RulesFloat,
+    RulesFloatGEZ as f_RulesFloatGEZ,
+    RulesFloatGZ as f_RulesFloatGZ,
+    RulesFloatLEZ as f_RulesFloatLEZ,
+    RulesInteger as f_RulesInteger,
+    RulesPassword as f_RulesPassword,
+    RulesSelection as f_RulesSelection,
+    RulesString as f_RulesString
 } from "./src/rules.js";
 
-const vuetify_rules={
-    isNullOrEmpty,
-    localtime,
-    capitalizeFirstLetter,
-    parseNumber,
-    ifnullempty,
-    isNumber,
-    isNumberWithRequired,
-    isNumberMaxDigitsWithRequired,
-    countDecimals,
-    translate,
-    isDateIsoString,
-    isDatetimeAwareIsoString,
-    isStringWithMaxDigits,
-    f,
-    my_round,
-    RulesDate,
-    RulesDateIsoString,
-    RulesDatetime,
-    RulesDatetimeAwareIsoString,
-    RulesEmail,
-    RulesFloat,
-    RulesFloatGEZ,
-    RulesFloatGZ,
-    RulesFloatLEZ,
-    RulesInteger,
-    RulesPassword,
-    RulesSelection,
-    RulesString,
-}
-
-export default vuetify_rules;
+// const vuetify_rules={
+//     isNullOrEmpty,
+//     localtime,
+//     capitalizeFirstLetter,
+//     parseNumber,
+//     ifnullempty,
+//     isNumber,
+//     isNumberWithRequired,
+//     isNumberMaxDigitsWithRequired,
+//     countDecimals,
+//     translate,
+//     isDateIsoString,
+//     isDatetimeAwareIsoString,
+//     isStringWithMaxDigits,
+//     f,
+//     my_round,
+//     RulesDate,
+//     RulesDateIsoString,
+//     RulesDatetime,
+//     RulesDatetimeAwareIsoString,
+//     RulesEmail,
+//     RulesFloat,
+//     RulesFloatGEZ,
+//     RulesFloatGZ,
+//     RulesFloatLEZ,
+//     RulesInteger,
+//     RulesPassword,
+//     RulesSelection,
+//     RulesString,
+// }
 
 
-// export const isNullOrEmpty=isNullOrEmpty
-// export const localtime=localtime
-// export const capitalizeFirstLetter=capitalizeFirstLetter
-// export const parseNumber=parseNumber
-// export const ifnullempty=ifnullempty
-// export const isNumber=isNumber
-// export const isNumberWithRequired=isNumberWithRequired
-// export const isNumberMaxDigitsWithRequired=isNumberMaxDigitsWithRequired
-// export const countDecimals=countDecimals
-// export const translate=translate
-// export const isDateIsoString=isDateIsoString
-// export const isDatetimeAwareIsoString=isDatetimeAwareIsoString
-// export const isStringWithMaxDigits=isStringWithMaxDigits
-// export const RulesDate=RulesDate
-// export const RulesDateIsoString=RulesDateIsoString
-// export const RulesDatetime=RulesDatetime
-// export const RulesDatetimeAwareIsoString=RulesDatetimeAwareIsoString
-// export const RulesEmail=RulesEmail
-// export const RulesFloat=RulesFloat
-// export const RulesFloatGZ=RulesFloatGZ
-// export const RulesFloatGEZ=RulesFloatGEZ
-// export const RulesFloatLEZ=RulesFloatLEZ
-// export const RulesInteger=RulesInteger
-// export const RulesPassword=RulesPassword
-// export const RulesSelection=RulesSelection
-// export const RulesString=RulesString
+export const isNullOrEmpty = f_isNullOrEmpty
+export const localtime = f_localtime
+export const capitalizeFirstLetter = f_capitalizeFirstLetter
+export const parseNumber = f_parseNumber
+export const ifnullempty = f_ifnullempty
+export const isNumber = f_isNumber
+export const isNumberWithRequired = f_isNumberWithRequired
+export const isNumberMaxDigitsWithRequired = f_isNumberMaxDigitsWithRequired
+export const countDecimals = f_countDecimals
+export const translate = f_translate
+export const isDateIsoString = f_isDateIsoString
+export const isDatetimeAwareIsoString = f_isDatetimeAwareIsoString
+export const isStringWithMaxDigits = f_isStringWithMaxDigits
+export const RulesDate = f_RulesDate
+export const RulesDateIsoString = f_RulesDateIsoString
+export const RulesDatetime = f_RulesDatetime
+export const RulesDatetimeAwareIsoString = f_RulesDatetimeAwareIsoString
+export const RulesEmail = f_RulesEmail
+export const RulesFloat = f_RulesFloat
+export const RulesFloatGZ = f_RulesFloatGZ
+export const RulesFloatGEZ = f_RulesFloatGEZ
+export const RulesFloatLEZ = f_RulesFloatLEZ
+export const RulesInteger = f_RulesInteger
+export const RulesPassword = f_RulesPassword
+export const RulesSelection = f_RulesSelection
+export const RulesString = f_RulesString
+export const my_round = f_my_round
