@@ -1,9 +1,8 @@
+var vuetify_rules=require("../index.js")
+describe("the add function", () => {
+    it("should add two numbers", () => {
+      const result = vuetify_rules.isNullOrEmpty( 2);
+      expect(vuetify_rules.isNullOrEmpty( 2)).toBe(false)
 
-
-import { isNullOrEmpty } from 'vuetify_rules';
-console.log(isNullOrEmpty)
-
-describe('isNullOrEmpty', () => {
-  test('is null or empty', () => {
-    expect(() => {isNullOrEmpty(null)}).tobe(true)})
-  })
+    });
+  });

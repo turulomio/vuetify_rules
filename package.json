@@ -21,5 +21,11 @@
   "homepage": "https://github.com/turulomio/vuetify_rules#readme",
   "dependencies": {
     "moment-timezone": "^0.5.43"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "scripts": {
+    "test": "jest"
   }
 }
