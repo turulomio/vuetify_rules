@@ -89,9 +89,13 @@ export function translate(s){
         return s
     } 
     return this.$t(s)
-
 }
 
+export function f(s, params=[]){
+    return s.replace(/\[(\d+)\]/g, (match, index) => {
+        return typeof params[index] !== 'undefined' ? params[index] : match;
+    });
+}
 
 // Returns if string has this format 'YYYY-mm-DD'
 export function isDateIsoString(s){
