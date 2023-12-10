@@ -25,15 +25,11 @@
   },
   "scripts": {
     "test": "mocha",
-    "coverage": "nyc --nycrc-path=.nycrc.json mocha",
+    "coverage": "nyc --nycrc-path=.nycrc.json npm test",
     "start": "node index.js"
   },
   "devDependencies": {
     "mocha": "^10.2.0",
     "nyc": "^15.1.0"
-  },
-  "nyc": {
-    "reporter": ["html","text"],
-    "include": ["src/*.js"]
   }
 }

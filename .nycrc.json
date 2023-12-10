@@ -1,16 +1,21 @@
 {
-    "cache": false,
-    "extension": [
-      ".js"
-    ],
-    "exclude": [
-      "coverage/**",
-      "test/**",
-      "**/node_modules/**"
-    ],
-    "all": true,
-    "check-coverage": true,
-    "sourceMap": true,
-    "instrument": true,
-    "include": ["src/*.js"]
+  "cache": false,
+  "extension": [
+    ".test.js"
+  ],
+  "exclude": [
+    "coverage/**",
+    "**/node_modules/**"
+  ],
+  "all": true,
+  "check-coverage": true,
+  "sourceMap": true,
+  "instrument": true,
+  "include": ["test/*.test.js"],
+  "reporter": [
+    "html",
+    "text",
+    "text-summary"
+  ]
 }
+
