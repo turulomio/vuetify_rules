@@ -1,4 +1,4 @@
-import { vuetify_rules } from '../index.js';
+import vuetify_rules from '../index.js';
 import assert from "assert"
 
 function validate_rules(value, rules, log=false){

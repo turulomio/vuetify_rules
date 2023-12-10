@@ -1,4 +1,4 @@
-import { vuetify_rules } from '../index.js';
+import vuetify_rules  from '../index.js';
 
 //Coverage of the test not of the module
 
@@ -58,5 +58,28 @@ describe("Functions", () => {
       assert.equal(vuetify_rules.countDecimals(12,123.121),0);
       assert.equal(vuetify_rules.countDecimals("12"),0);
   })
+
+
+  it('my_round', () => {
+    assert.equal(vuetify_rules.my_round(1.99, 2),1.99)
+    assert.equal(vuetify_rules.my_round(1.999, 2), 2)
+    assert.equal(vuetify_rules.my_round(1.001, 2), 1)
+    assert.equal(vuetify_rules.my_round("", 2), null)
+    assert.equal(vuetify_rules.my_round(0, 2), 0)
+    assert.equal(vuetify_rules.my_round(null, 2), null)
+    assert.equal(vuetify_rules.my_round(NaN, 2), null)
+})
+
+  it ('localtime', () => {
+    assert.equal(vuetify_rules.localtime(1.99), null)
+    assert.equal(vuetify_rules.localtime(""), null)
+    assert.equal(vuetify_rules.localtime(0), null)
+    assert.equal(vuetify_rules.localtime(null, 2), null)
+    assert.equal(vuetify_rules.localtime(NaN, 2), null)
+    assert.equal(vuetify_rules.localtime(Date(2023,1,1,1,1, 2)), null)
+    assert.equal(vuetify_rules.localtime("2016"), null)
+    assert.equal(vuetify_rules.localtime("2016-10-10T15:35:52.764Z"), "2016-10-10 17:35:52")
+    assert.equal(vuetify_rules.localtime("2023-12-10T15:35:52.764Z"), "2023-12-10 16:35:52")
+})
 
 });
