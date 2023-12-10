@@ -91,3 +91,4 @@ export const RulesPassword = f_RulesPassword
 export const RulesSelection = f_RulesSelection
 export const RulesString = f_RulesString
 export const my_round = f_my_round
+export const f = f_f

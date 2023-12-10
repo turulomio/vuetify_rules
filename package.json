@@ -26,7 +26,8 @@
   "scripts": {
     "test": "mocha",
     "coverage": "c8 --check-coverage --all mocha", 
-    "start": "node index.js"
+    "start": "node index.js",
+    "release": "node src/script_release.js"
   },
   "devDependencies": {
     "c8": "^8.0.1",
