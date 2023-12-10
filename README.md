@@ -9,5 +9,5 @@ Rules to validate forms with vuetify
 
 ## CHANGELOG
 
-### 0.3.0 (2023-12-10)
+### 0.4.0 (2023-12-10)
 - Basic functionality
