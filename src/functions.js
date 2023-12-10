@@ -9,12 +9,12 @@ export function my_round(num, decimals = 2) {
 
 // Value es un utc iso string with T and Z
 export function localtime(value){
-    if (typeof value!='string') return null
-    if ( moment(value,moment.ISO_8601).isValid()==false) return null
-    if (value.split("-").length!=3) return null
-    if (value.split(":").length!=3) return null
-    if (value.includes("T")==false) return null
-    if (value.endsWith("Z")==false) return null
+    if (typeof value!='string') return ""
+    if ( moment(value,moment.ISO_8601).isValid()==false) return ""
+    if (value.split("-").length!=3) return ""
+    if (value.split(":").length!=3) return ""
+    if (value.includes("T")==false) return ""
+    if (value.endsWith("Z")==false) return ""
     if (value){
         var dateFormat = 'YYYY-MM-DD HH:mm:ss';
         var testDateUtc = moment(value,moment.ISO_8601);
@@ -24,8 +24,9 @@ export function localtime(value){
     return null;
 }   
 
-export function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+export function capitalizeFirstLetter(value) {
+    if (typeof value!='string') throw TypeError(f("I can't capitalize a non string: [0]", [typeof value,]))
+    return value.charAt(0).toUpperCase() + value.slice(1);
   }
 
 export function parseNumber(strg){

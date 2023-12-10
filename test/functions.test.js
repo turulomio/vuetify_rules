@@ -1,4 +1,15 @@
-import {isNullOrEmpty,isNumber,isNumberWithRequired,isNumberMaxDigitsWithRequired,countDecimals,my_round,localtime}  from '../index.js';
+import {
+  capitalizeFirstLetter,
+  isNullOrEmpty,
+  isNumber,
+  isNumberWithRequired,
+  isNumberMaxDigitsWithRequired,
+  countDecimals,
+  my_round,
+  localtime
+}  from '../index.js';
+
+
 
 //Coverage of the test not of the module
 
@@ -70,16 +81,24 @@ describe("Functions", () => {
     assert.equal(my_round(NaN, 2), null)
 })
 
-  it ('localtime', () => {
-    assert.equal(localtime(1.99), null)
-    assert.equal(localtime(""), null)
-    assert.equal(localtime(0), null)
-    assert.equal(localtime(null, 2), null)
-    assert.equal(localtime(NaN, 2), null)
-    assert.equal(localtime(Date(2023,1,1,1,1, 2)), null)
-    assert.equal(localtime("2016"), null)
-    assert.equal(localtime("2016-10-10T15:35:52.764Z").slice(14,19), "35:52") //Due to github localzone, automatic tests
-    assert.equal(localtime("2023-12-10T15:35:52.764Z").slice(14,19), "35:52")
+it ('localtime', () => {
+  assert.equal(localtime(1.99), "")
+  assert.equal(localtime(""), "")
+  assert.equal(localtime(0), "")
+  assert.equal(localtime("", 2), "")
+  assert.equal(localtime(NaN, 2), "")
+  assert.equal(localtime(Date(2023,1,1,1,1, 2)), "")
+  assert.equal(localtime("2016"), "")
+  assert.equal(localtime("2016-10-10T15:35:52.764Z").slice(14,19), "35:52") //Due to github localzone, automatic tests
+  assert.equal(localtime("2023-12-10T15:35:52.764Z").slice(14,19), "35:52")
+})  
+
+it ('capitalizeFirstLetter', () => {
+  assert.equal(capitalizeFirstLetter("turulomio"), "Turulomio")
+  assert.equal(capitalizeFirstLetter("Turulomio"), "Turulomio")
+  assert.equal(capitalizeFirstLetter(""), "")
+  assert.throws(() => capitalizeFirstLetter(null),TypeError)
+  assert.throws(() => capitalizeFirstLetter(1.99),TypeError)
 })
 
 });
