@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Rules and functions necessary to validate forms in vuetify",
   "main": "index.js",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/turulomio/vuetify_rules.git"

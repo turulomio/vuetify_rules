@@ -1,9 +1,9 @@
-"use strict"
+import { isNullOrEmpty } from "./src/functions.js";
 
-function isNullOrEmpty(n){
-    if (n==="") return true
-    if (n===0) return false
-    if (n===null) return true
-    return false
+console.log(isNullOrEmpty("HOLA"))
+
+export const vuetify_rules={
+    isNullOrEmpty
+
 }
-module.exports= isNullOrEmpty
+
