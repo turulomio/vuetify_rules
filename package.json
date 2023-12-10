@@ -1,0 +1,28 @@
+{
+  "name": "vuetify_rules",
+  "version": "0.1.0",
+  "description": "Rules and functions necessary to validate forms in vuetify",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/turulomio/vuetify_rules.git"
+  },
+  "keywords": [
+    "vuetify",
+    "rules",
+    "forms",
+    "validation"
+  ],
+  "author": "Turulomio",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/turulomio/vuetify_rules/issues"
+  },
+  "homepage": "https://github.com/turulomio/vuetify_rules#readme",
+  "dependencies": {
+    "moment-timezone": "^0.5.43"
+  }
+}
