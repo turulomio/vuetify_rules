@@ -1,0 +1,6 @@
+- Change version in package.json
+- npm run test
+- git commit -am vuetify_rules-NEWVERSION
+- git push
+- New github tag
+- npm publish --access public
