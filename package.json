@@ -21,13 +21,11 @@
   },
   "homepage": "https://github.com/turulomio/vuetify_rules#readme",
   "dependencies": {
+    "mocha": "^10.2.0",
     "moment-timezone": "^0.5.43"
   },
-  "devDependencies": {
-    "jest": "^29.7.0"
-  },
   "scripts": {
-    "test": "jest",
-    "run": "node index.js"
+    "test": "mocha",
+    "start": "node index.js"
   }
 }
