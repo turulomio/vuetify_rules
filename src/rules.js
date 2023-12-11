@@ -6,16 +6,25 @@
 // TO improve readibility I will emule rules behavier
 // Rules returns [] when everything is ok, returns a ['comment'] to show error
 
+
 import {
     isNullOrEmpty,
     isNumber,
     isNumberMaxDigitsWithRequired,
     countDecimals,
-    translate,
     isDateIsoString,
     isDatetimeAwareIsoString,
     isStringWithMaxDigits,
+    f,
 } from "./functions.js"
+
+let locale = Intl.DateTimeFormat().resolvedOptions().locale;
+console.log("vuetify_rules detected locale:", locale);
+function translate(s,params){
+    // TODO
+    return f(s,params)
+}
+
 
 export function RulesInteger(maxdigits,required){
     var r

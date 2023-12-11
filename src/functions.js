@@ -84,13 +84,6 @@ export function countDecimals (n) {
     if (arr.length!=2) return 0
     return n.toString().split(".")[1].length || 0; 
 }
-    
-export function translate(s){
-    if (this==undefined){
-        return s
-    } 
-    return this.$t(s)
-}
 
 export function f(s, params=[]){
     return s.replace(/\[(\d+)\]/g, (match, index) => {
@@ -98,20 +91,22 @@ export function f(s, params=[]){
     });
 }
 
+
+
 // Returns if string has this format 'YYYY-mm-DD'
 export function isDateIsoString(s){
     if (typeof s!="string") return false
     if (s.split("-").length!=3) return false
     if ( moment(s, moment.ISO_8601).isValid()==false) return false 
     return true
-
 }
+
 export function isStringWithMaxDigits(s,mindigits,maxdigits){
     if (typeof s!="string") return false
     if (s.length<mindigits || s.length>maxdigits) return false
     return true
 }
-// Returns if string has this format '2016-10-10T15:35:52.764Z'
+
 export function isDatetimeAwareIsoString(s){
     if (typeof s!="string") return false
     if (s.split("-").length!=3) return false
