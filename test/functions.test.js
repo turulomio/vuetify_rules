@@ -1,12 +1,16 @@
+import { parse } from 'path';
 import {
   capitalizeFirstLetter,
+  ifnullempty,
+  isDateIsoString,
   isNullOrEmpty,
   isNumber,
   isNumberWithRequired,
   isNumberMaxDigitsWithRequired,
   countDecimals,
   my_round,
-  localtime
+  localtime,
+  parseNumber
 }  from '../index.js';
 
 
@@ -24,12 +28,33 @@ describe("Functions", () => {
   });
 
 
+  it('ifnullempty', () => {
+    assert.equal(ifnullempty(""),"");
+    assert.equal(ifnullempty(null),"");
+    assert.equal(ifnullempty(12),12);
+    assert.equal(ifnullempty(12.121),12.121);
+    assert.equal(ifnullempty("12"),"12");
+  })
+
+
+  it('isDateIsoString', () => {
+    assert.equal(isDateIsoString(""),false);
+    assert.equal(isDateIsoString(null),false);
+    assert.equal(isDateIsoString(12),false);
+    assert.equal(isDateIsoString("12"),false);
+    assert.equal(isDateIsoString("12-12-12"),false);
+    assert.equal(isDateIsoString("12-14-12"),false);
+    assert.equal(isDateIsoString("2023-11"),false);
+    assert.equal(isDateIsoString("2023-1-1"),false);
+    assert.equal(isDateIsoString("2023-01-01"),true);
+  })
+
   it('isNumber', () => {
-      assert.equal(isNumber(""),false);
-      assert.equal(isNumber(null),false);
-      assert.equal(isNumber(12),true);
-      assert.equal(isNumber(12.121),true);
-      assert.equal(isNumber("12"),false);
+    assert.equal(isNumber(""),false);
+    assert.equal(isNumber(null),false);
+    assert.equal(isNumber(12),true);
+    assert.equal(isNumber(12.121),true);
+    assert.equal(isNumber("12"),false);
   })
 
   it('isNumberWithRequired', () => {
@@ -81,24 +106,38 @@ describe("Functions", () => {
     assert.equal(my_round(NaN, 2), null)
 })
 
-it ('localtime', () => {
-  assert.equal(localtime(1.99), "")
-  assert.equal(localtime(""), "")
-  assert.equal(localtime(0), "")
-  assert.equal(localtime("", 2), "")
-  assert.equal(localtime(NaN, 2), "")
-  assert.equal(localtime(Date(2023,1,1,1,1, 2)), "")
-  assert.equal(localtime("2016"), "")
-  assert.equal(localtime("2016-10-10T15:35:52.764Z").slice(14,19), "35:52") //Due to github localzone, automatic tests
-  assert.equal(localtime("2023-12-10T15:35:52.764Z").slice(14,19), "35:52")
-})  
+  it ('localtime', () => {
+    assert.equal(localtime(1.99), "")
+    assert.equal(localtime(""), "")
+    assert.equal(localtime(0), "")
+    assert.equal(localtime("", 2), "")
+    assert.equal(localtime(NaN, 2), "")
+    assert.equal(localtime(Date(2023,1,1,1,1, 2)), "")
+    assert.equal(localtime("2016"), "")
+    assert.equal(localtime("2016-10-10T15:35:52.764Z").slice(14,19), "35:52") //Due to github localzone, automatic tests
+    assert.equal(localtime("2023-12-10T15:35:52.764Z").slice(14,19), "35:52")
+  })  
 
-it ('capitalizeFirstLetter', () => {
-  assert.equal(capitalizeFirstLetter("turulomio"), "Turulomio")
-  assert.equal(capitalizeFirstLetter("Turulomio"), "Turulomio")
-  assert.equal(capitalizeFirstLetter(""), "")
-  assert.throws(() => capitalizeFirstLetter(null),TypeError)
-  assert.throws(() => capitalizeFirstLetter(1.99),TypeError)
-})
+  it ('capitalizeFirstLetter', () => {
+    assert.equal(capitalizeFirstLetter("turulomio"), "Turulomio")
+    assert.equal(capitalizeFirstLetter("Turulomio"), "Turulomio")
+    assert.equal(capitalizeFirstLetter(""), "")
+    assert.throws(() => capitalizeFirstLetter(null),TypeError)
+    assert.throws(() => capitalizeFirstLetter(1.99),TypeError)
+  })
+
+
+  it('parseNumber', () => {
+    assert.equal(parseNumber(""), NaN);
+    assert.equal(parseNumber(null),NaN);
+    assert.equal(parseNumber(12),12);
+    assert.equal(parseNumber(12.121),12.121);
+    assert.equal(parseNumber("12"),"12");
+    assert.equal(parseNumber("12.2"), 12.2);
+    assert.equal(parseNumber("12,2"), 12.2);
+    assert.equal(parseNumber("12.2"), 12.2);
+    assert.equal(parseNumber("1,112.2"), NaN);
+    assert.equal(parseNumber("1.112,2"), NaN);
+  })
 
 });

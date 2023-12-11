@@ -8,7 +8,6 @@ import {
     isNumberWithRequired as f_isNumberWithRequired,
     isNumberMaxDigitsWithRequired as f_isNumberMaxDigitsWithRequired,
     countDecimals as f_countDecimals,
-    translate as f_translate,
     isDateIsoString as f_isDateIsoString,
     isDatetimeAwareIsoString as f_isDatetimeAwareIsoString,
     isStringWithMaxDigits as f_isStringWithMaxDigits,
@@ -73,7 +72,6 @@ export const isNumber = f_isNumber
 export const isNumberWithRequired = f_isNumberWithRequired
 export const isNumberMaxDigitsWithRequired = f_isNumberMaxDigitsWithRequired
 export const countDecimals = f_countDecimals
-export const translate = f_translate
 export const isDateIsoString = f_isDateIsoString
 export const isDatetimeAwareIsoString = f_isDatetimeAwareIsoString
 export const isStringWithMaxDigits = f_isStringWithMaxDigits
