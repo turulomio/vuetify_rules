@@ -29,9 +29,12 @@ export function capitalizeFirstLetter(value) {
     return value.charAt(0).toUpperCase() + value.slice(1);
   }
 
-export function parseNumber(strg){
-    strg = strg.toString().replace(',', '.');
-    return parseFloat(strg);
+export function parseNumber(value){
+    if (typeof value==='number') return value
+    if (typeof value!=='string') return NaN
+    if (value.includes(",") && value.includes(".")) return NaN //1.222,2334   1,222.22223
+    value = value.toString().replace(",", '.');
+    return parseFloat(value);
 }
 
 

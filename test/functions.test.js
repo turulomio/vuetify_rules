@@ -1,3 +1,4 @@
+import { parse } from 'path';
 import {
   capitalizeFirstLetter,
   ifnullempty,
@@ -8,7 +9,8 @@ import {
   isNumberMaxDigitsWithRequired,
   countDecimals,
   my_round,
-  localtime
+  localtime,
+  parseNumber
 }  from '../index.js';
 
 
@@ -32,7 +34,7 @@ describe("Functions", () => {
     assert.equal(ifnullempty(12),12);
     assert.equal(ifnullempty(12.121),12.121);
     assert.equal(ifnullempty("12"),"12");
-})
+  })
 
 
   it('isDateIsoString', () => {
@@ -122,6 +124,20 @@ describe("Functions", () => {
     assert.equal(capitalizeFirstLetter(""), "")
     assert.throws(() => capitalizeFirstLetter(null),TypeError)
     assert.throws(() => capitalizeFirstLetter(1.99),TypeError)
+  })
+
+
+  it('parseNumber', () => {
+    assert.equal(parseNumber(""), NaN);
+    assert.equal(parseNumber(null),NaN);
+    assert.equal(parseNumber(12),12);
+    assert.equal(parseNumber(12.121),12.121);
+    assert.equal(parseNumber("12"),"12");
+    assert.equal(parseNumber("12.2"), 12.2);
+    assert.equal(parseNumber("12,2"), 12.2);
+    assert.equal(parseNumber("12.2"), 12.2);
+    assert.equal(parseNumber("1,112.2"), NaN);
+    assert.equal(parseNumber("1.112,2"), NaN);
   })
 
 });
