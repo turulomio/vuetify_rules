@@ -18,13 +18,26 @@ import {
     f,
 } from "./functions.js"
 
-let locale = Intl.DateTimeFormat().resolvedOptions().locale;
-console.log("vuetify_rules detected locale:", locale);
-function translate(s,params){
-    // TODO
-    return f(s,params)
-}
+import { dict_es } from "./i18n.js";
 
+
+export function translate(s,params=[]){
+    let locale = Intl.DateTimeFormat().resolvedOptions().locale;
+    // console.log("vuetify_rules detected locale:", locale);
+    var dict=null
+    var translated_string
+    if (locale=="es-ES"){
+        dict=dict_es
+    }
+
+    if (dict!=null && dict.has(s)){
+        translated_string=dict.get(s)
+    }else {
+        translated_string=s
+    }
+
+    return f(translated_string,params)
+}
 
 export function RulesInteger(maxdigits,required){
     var r

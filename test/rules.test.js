@@ -65,6 +65,7 @@ describe("Rules", () => {
       assert.equal(validate_rules("1231",  RulesFloatGZ(6,false,2),   false),false);
       assert.equal(validate_rules(null,  RulesFloatGZ(6,false,2),   false),true);
       assert.equal(validate_rules("",  RulesFloatGZ(6,false,2),   false),true);
+
   })
 
   it('RulesFloatGEZ',() =>{
