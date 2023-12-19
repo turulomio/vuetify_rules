@@ -1,4 +1,6 @@
-module.exports={
+
+
+{
     debug: false,
     sort: true,
     // attr: {
