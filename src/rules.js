@@ -23,6 +23,7 @@ import {
 import { i18n } from "./i18next.js"
 console.log(i18n)
 console.log(i18n.t("Hola"))
+console.log(i18n.t("key"))
 // console.log(i18n)
 // i18n.t("HOLA")
 

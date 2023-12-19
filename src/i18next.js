@@ -5,7 +5,7 @@ i18next.init({
     resources: {
     en: {
         translation: {
-        "key": "hello world"
+            "key": "hello world translated"
         }
     }
     }
