@@ -1,32 +1,26 @@
 import i18next from "i18next";
-import LanguageDetector from 'i18next-browser-languagedetector';
-// import resourcesToBackend from 'i18next-resources-to-backend';
-import en from "./locales/en/translation.json" assert { type: 'json' };
-import es from "./locales/en/translation.json" assert { type: 'json' };
-import fr from "./locales/en/translation.json" assert { type: 'json' };
+import Backend from 'i18next-fs-backend';
+
 
 
 i18next
-    // .use(resourcesToBackend((language, namespace) => import(`./i18n/${language}/${namespace}.json`)))
-    .use(LanguageDetector)
+    .use(Backend)
     .init({
         lng: [
             'en',
             'es',
             'fr',
-         ], // if you're using a language detector, do not define the lng option
-        resources: {
-            'en': {translation: en},
-            'es': {translation: es},
-            'fr': {translation: fr},
-            // // ---------^ namespace
-            // 'nl-NL': {translation: require('./nl-nl/translation.json')},
+         ],
+        backend: {
+            loadPath: './locales/{{lng}}/{{ns}}.json',
+            // path to post missing resources
+            addPath: './locales/{{lng}}/{{ns}}.missing.json',
           },
         debug: true,    
-        // partialBundledLanguages: "true",
         fallbackLng: "en"
     });
 
+i18next.changeLanguage(Intl.DateTimeFormat().resolvedOptions().locale)
 export const i18n=i18next
 
 // console.log(en)
@@ -62,38 +56,6 @@ import {
     RulesSelection as f_RulesSelection,
     RulesString as f_RulesString
 } from "./src/rules.js";
-
-// const vuetify_rules={
-//     isNullOrEmpty,
-//     localtime,
-//     capitalizeFirstLetter,
-//     parseNumber,
-//     ifnullempty,
-//     isNumber,
-//     isNumberWithRequired,
-//     isNumberMaxDigitsWithRequired,
-//     countDecimals,
-//     translate,
-//     isDateIsoString,
-//     isDatetimeAwareIsoString,
-//     isStringWithMaxDigits,
-//     f,
-//     my_round,
-//     RulesDate,
-//     RulesDateIsoString,
-//     RulesDatetime,
-//     RulesDatetimeAwareIsoString,
-//     RulesEmail,
-//     RulesFloat,
-//     RulesFloatGEZ,
-//     RulesFloatGZ,
-//     RulesFloatLEZ,
-//     RulesInteger,
-//     RulesPassword,
-//     RulesSelection,
-//     RulesString,
-// }
-
 
 export const isNullOrEmpty = f_isNullOrEmpty
 export const localtime = f_localtime
