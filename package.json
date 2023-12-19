@@ -23,8 +23,6 @@
   "dependencies": {
     "i18next": "^23.7.11",
     "i18next-browser-languagedetector": "^7.2.0",
-    "i18next-parser": "^8.9.0",
-    "i18next-resources-to-backend": "^1.2.0",
     "moment-timezone": "^0.5.43"
   },
   "scripts": {
@@ -37,7 +35,7 @@
   },
   "devDependencies": {
     "c8": "^8.0.1",
-    "i18next-scanner": "^4.4.0",
+    "i18next-parser": "^8.9.0",
     "mocha": "^10.2.0",
     "npm-check-updates": "^16.14.11"
   }
