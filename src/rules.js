@@ -16,28 +16,9 @@ import {
     isDatetimeAwareIsoString,
     isStringWithMaxDigits,
     f,
+    translate,
 } from "./functions.js"
 
-import { dict_es } from "./i18n.js";
-
-
-export function translate(s,params=[]){
-    let locale = Intl.DateTimeFormat().resolvedOptions().locale;
-    // console.log("vuetify_rules detected locale:", locale);
-    var dict=null
-    var translated_string
-    if (locale=="es-ES"){
-        dict=dict_es
-    }
-
-    if (dict!=null && dict.has(s)){
-        translated_string=dict.get(s)
-    }else {
-        translated_string=s
-    }
-
-    return f(translated_string,params)
-}
 
 export function RulesInteger(maxdigits,required){
     var r
@@ -63,12 +44,12 @@ export function RulesFloat (maxdigits, required, maxdecimals){
     if (required==false){
         r= [
             v => (isNullOrEmpty(v) || isNumberMaxDigitsWithRequired(v,required,maxdigits)) || translate('Field can be empty or a number with [0] digits at most', [maxdigits]),
-            v => (isNullOrEmpty(v) || isNumber(v) && countDecimals(v)<=maxdecimals) || translate('Must be a number with [0] decimal places at most', [maxdecimals]),
+            v => (isNullOrEmpty(v) || isNumber(v) && countDecimals(v)<=maxdecimals) || translate('Must be a number with [0] decimals places at most', [maxdecimals]),
         ]
     } else { // required==true
         r= [
             v => isNumberMaxDigitsWithRequired(v,required,maxdigits)|| translate('Field must be a number with at most [0] digits', [maxdigits]),
-            v => countDecimals(v)<=maxdecimals || translate('Must be a number with [0] decimal places at most', [maxdecimals]),
+            v => countDecimals(v)<=maxdecimals || translate('Must be a number with [0] decimals places at most', [maxdecimals]),
         ]
     }
     return r
@@ -80,13 +61,13 @@ export function RulesFloatGZ (maxdigits, required, maxdecimals){
         r= [
             v => (isNullOrEmpty(v) || isNumberMaxDigitsWithRequired(v,required,maxdigits)) || translate('Field can be empty or a number with [0] digits at most', [maxdigits]),
             v => (isNullOrEmpty(v) || (isNumber(v) && v>0)) || translate('Must be a number greater than zero'),
-            v => (isNullOrEmpty(v) || (isNumber(v) && countDecimals(v)<=maxdecimals)) || translate('Must be a number with [0] decimal places at most', [maxdecimals]),
+            v => (isNullOrEmpty(v) || (isNumber(v) && countDecimals(v)<=maxdecimals)) || translate('Must be a number with [0] decimals places at most', [maxdecimals]),
         ]
     } else { // required==true
         r= [
             v => isNumberMaxDigitsWithRequired(v,required,maxdigits)|| translate('Field must be a number with at most [0] digits', [maxdigits]),
             v => v>0 || translate('Must be a number greater than zero'),
-            v => countDecimals(v)<=maxdecimals || translate('Must be a number with [0] decimal places at most', [maxdecimals]),
+            v => countDecimals(v)<=maxdecimals || translate('Must be a number with [0] decimals places at most', [maxdecimals]),
         ]
     }
     return r
@@ -98,13 +79,13 @@ export function RulesFloatGEZ (maxdigits, required, maxdecimals){
         r= [
             v => (isNullOrEmpty(v) || isNumberMaxDigitsWithRequired(v,required,maxdigits)) || translate('Field can be empty or a number with [0] digits at most', [maxdigits]),
             v => (isNullOrEmpty(v) || isNumber(v) && v>=0) || translate('Must be a number greater than zero'),
-            v => (isNullOrEmpty(v) || isNumber(v) && countDecimals(v)<=maxdecimals) || translate('Must be a number with [0] decimal places at most', [maxdecimals]),
+            v => (isNullOrEmpty(v) || isNumber(v) && countDecimals(v)<=maxdecimals) || translate('Must be a number with [0] decimals places at most', [maxdecimals]),
         ]
     } else { // required==true
         r= [
             v => isNumberMaxDigitsWithRequired(v,required,maxdigits)|| translate('Field must be a number with at most [0] digits', [maxdigits]),
             v => v>=0 || translate('Must be a number greater than zero'),
-            v => countDecimals(v)<=maxdecimals || translate('Must be a number with [0] decimal places at most', [maxdecimals]),
+            v => countDecimals(v)<=maxdecimals || translate('Must be a number with [0] decimals places at most', [maxdecimals]),
         ]
     }
     return r
@@ -115,13 +96,13 @@ export function RulesFloatLEZ(maxdigits, required, maxdecimals){
         r= [
             v => (isNullOrEmpty(v) || isNumberMaxDigitsWithRequired(v,required,maxdigits)) || translate('Field can be empty or a number with [0] digits at most', [maxdigits]),
             v => (isNullOrEmpty(v) || isNumber(v) && v<=0) || translate('Must be a number greater than zero'),
-            v => (isNullOrEmpty(v) || isNumber(v) && countDecimals(v)<=maxdecimals) || translate('Must be a number with [0] decimal places at most', [maxdecimals]),
+            v => (isNullOrEmpty(v) || isNumber(v) && countDecimals(v)<=maxdecimals) || translate('Must be a number with [0] decimals places at most', [maxdecimals]),
         ]
     } else { // required==true
         r= [
             v => isNumberMaxDigitsWithRequired(v,required,maxdigits)|| translate('Field must be a number with at most [0] digits', [maxdigits]),
             v => v<=0 || translate('Must be a number greater than zero'),
-            v => countDecimals(v)<=maxdecimals || translate('Must be a number with [0] decimal places at most', [maxdecimals]),
+            v => countDecimals(v)<=maxdecimals || translate('Must be a number with [0] decimals places at most', [maxdecimals]),
         ]
     }
     return r
