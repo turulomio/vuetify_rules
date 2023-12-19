@@ -1,5 +1,27 @@
+import i18next from "i18next";
+// import resourcesToBackend from 'i18next-resources-to-backend';
+import en from "./i18n/en/translation.json" assert { type: 'json' };
 
 
+i18next
+    // .use(resourcesToBackend((language, namespace) => import(`./i18n/${language}/${namespace}.json`)))
+    .init({
+        lng: [
+            'en',
+         ], // if you're using a language detector, do not define the lng option
+        resources: {
+            'en': {translation: en},
+            // // ---------^ namespace
+            // 'nl-NL': {translation: require('./nl-nl/translation.json')},
+          },
+        debug: true,    
+        // partialBundledLanguages: "true",
+        fallbackLng: "en"
+    });
+
+export const i18n=i18next
+
+// console.log(en)
 import { 
     isNullOrEmpty as f_isNullOrEmpty,
     localtime as f_localtime,

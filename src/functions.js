@@ -1,6 +1,5 @@
 import moment from 'moment-timezone'
 
-
 export function translate(s,params=[]){
     // let locale = Intl.DateTimeFormat().resolvedOptions().locale;
     // // console.log("vuetify_rules detected locale:", locale);

@@ -1,4 +1,4 @@
-import {RulesInteger,RulesFloat,RulesFloatGEZ,RulesFloatLEZ,RulesFloatGZ,RulesDatetimeAwareIsoString,RulesDateIsoString} from '../index.js';
+import {RulesInteger,RulesFloat,RulesFloatGEZ,RulesFloatLEZ,RulesFloatGZ,RulesDatetimeAwareIsoString,RulesDateIsoString, i18n} from '../index.js';
 import assert from "assert"
 
 function validate_rules(value, rules, log=false){
@@ -15,6 +15,7 @@ function validate_rules(value, rules, log=false){
 
 describe("Rules", () => {
   it('RulesInteger',() =>{
+    console.log(i18n.t("Invalid Email address"))
       assert.equal(validate_rules(12346,  RulesInteger(6,true),   false),true);
       assert.equal(validate_rules(1234611,  RulesInteger(6,true),   false),false);
       assert.equal(validate_rules("1231",  RulesInteger(6,true),   false),false);
