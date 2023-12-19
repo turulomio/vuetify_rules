@@ -1,13 +1,24 @@
 import i18next from "i18next";
-// import resourcesToBackend from 'i18next-resources-to-backend';
+import Backend from 'i18next-fs-backend';
 
-  
+
+
 i18next
-    // .use(resourcesToBackend((language, namespace) => import(`../../i18n/${language}/${namespace}.json`)))
+    .use(Backend)
     .init({
-        lng: 'en', // if you're using a language detector, do not define the lng option
-        debug: true,    
+        debug: false,  
+        lng: [
+            'en',
+            'es',
+            'fr',
+         ],
+        backend: {
+            loadPath: './locales/{{lng}}/{{ns}}.json',
+            // path to post missing resources
+            addPath: './locales/{{lng}}/{{ns}}.missing.json',
+          },  
         fallbackLng: "en"
     });
 
-export const i18n=i18next
+i18next.changeLanguage(Intl.DateTimeFormat().resolvedOptions().locale)
+export const module_i18next=i18next

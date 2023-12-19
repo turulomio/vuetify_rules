@@ -1,27 +1,4 @@
-import i18next from "i18next";
-import Backend from 'i18next-fs-backend';
-
-
-
-i18next
-    .use(Backend)
-    .init({
-        lng: [
-            'en',
-            'es',
-            'fr',
-         ],
-        backend: {
-            loadPath: './locales/{{lng}}/{{ns}}.json',
-            // path to post missing resources
-            addPath: './locales/{{lng}}/{{ns}}.missing.json',
-          },
-        debug: true,    
-        fallbackLng: "en"
-    });
-
-i18next.changeLanguage(Intl.DateTimeFormat().resolvedOptions().locale)
-export const i18n=i18next
+import {module_i18next} from "./src/i18next.js"
 
 // console.log(en)
 import { 
@@ -84,3 +61,4 @@ export const RulesSelection = f_RulesSelection
 export const RulesString = f_RulesString
 export const my_round = f_my_round
 export const f = f_f
+export const i18n=module_i18next
