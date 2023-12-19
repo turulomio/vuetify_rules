@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/turulomio/vuetify_rules#readme",
   "dependencies": {
+    "i18next": "^23.7.11",
     "moment-timezone": "^0.5.43"
   },
   "scripts": {

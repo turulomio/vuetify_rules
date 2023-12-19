@@ -1,4 +1,4 @@
-import { parse } from 'path';
+
 import {
   capitalizeFirstLetter,
   ifnullempty,

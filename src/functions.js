@@ -1,24 +1,22 @@
 import moment from 'moment-timezone'
 
-import { dict_es } from "./i18n.js";
-
 
 export function translate(s,params=[]){
-    let locale = Intl.DateTimeFormat().resolvedOptions().locale;
-    // console.log("vuetify_rules detected locale:", locale);
-    var dict=null
-    var translated_string
-    if (locale=="es-ES"){
-        dict=dict_es
-    }
+    // let locale = Intl.DateTimeFormat().resolvedOptions().locale;
+    // // console.log("vuetify_rules detected locale:", locale);
+    // var dict=null
+    // var translated_string
+    // if (locale=="es-ES"){
+    //     dict=dict_es
+    // }
 
-    if (dict!=null && dict.has(s)){
-        translated_string=dict.get(s)
-    }else {
-        translated_string=s
-    }
+    // if (dict!=null && dict.has(s)){
+    //     translated_string=dict.get(s)
+    // }else {
+    //     translated_string=s
+    // }
 
-    return f(translated_string,params)
+    return f(s,params)
 }
 
 // Rounds num or return null if can't do it

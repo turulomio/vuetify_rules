@@ -7,6 +7,7 @@
 // Rules returns [] when everything is ok, returns a ['comment'] to show error
 
 
+
 import {
     isNullOrEmpty,
     isNumber,
@@ -19,6 +20,11 @@ import {
     translate,
 } from "./functions.js"
 
+import { i18n } from "./i18next.js"
+console.log(i18n)
+console.log(i18n.t("Hola"))
+// console.log(i18n)
+// i18n.t("HOLA")
 
 export function RulesInteger(maxdigits,required){
     var r
