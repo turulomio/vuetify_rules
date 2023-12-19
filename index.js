@@ -1,16 +1,24 @@
 import i18next from "i18next";
+import LanguageDetector from 'i18next-browser-languagedetector';
 // import resourcesToBackend from 'i18next-resources-to-backend';
-import en from "./i18n/en/translation.json" assert { type: 'json' };
+import en from "./locales/en/translation.json" assert { type: 'json' };
+import es from "./locales/en/translation.json" assert { type: 'json' };
+import fr from "./locales/en/translation.json" assert { type: 'json' };
 
 
 i18next
     // .use(resourcesToBackend((language, namespace) => import(`./i18n/${language}/${namespace}.json`)))
+    .use(LanguageDetector)
     .init({
         lng: [
             'en',
+            'es',
+            'fr',
          ], // if you're using a language detector, do not define the lng option
         resources: {
             'en': {translation: en},
+            'es': {translation: es},
+            'fr': {translation: fr},
             // // ---------^ namespace
             // 'nl-NL': {translation: require('./nl-nl/translation.json')},
           },

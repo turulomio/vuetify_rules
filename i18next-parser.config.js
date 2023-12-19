@@ -11,7 +11,11 @@ export default {
     // Default namespace used in your i18next config
   
     defaultValue: function(locale, ns, key,value) {
-        return key + " (NOT TRANSLATED)"
+        if (locale=="en"){
+            return key
+        } else {
+            return key + " (NOT TRANSLATED)"
+        }
     },
     // Default value to give to keys with no value
     // You may also specify a function accepting the locale, namespace, key, and value as arguments
