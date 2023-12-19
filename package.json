@@ -21,16 +21,20 @@
   },
   "homepage": "https://github.com/turulomio/vuetify_rules#readme",
   "dependencies": {
+    "i18next": "^23.7.11",
+    "i18next-fs-backend": "^2.3.1",
     "moment-timezone": "^0.5.43"
   },
   "scripts": {
     "test": "mocha",
     "coverage": "c8 --check-coverage --all mocha",
     "start": "node index.js",
-    "release": "node src/script_release.js"
+    "release": "node src/script_release.js",
+    "translate": "i18next 'src/*.js'"
   },
   "devDependencies": {
     "c8": "^8.0.1",
+    "i18next-parser": "^8.9.0",
     "mocha": "^10.2.0",
     "npm-check-updates": "^16.14.11"
   }

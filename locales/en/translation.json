@@ -1,0 +1,20 @@
+{
+  "Email is required": "Email is required",
+  "Field can be empty or a number with [0] digits at most": "Field can be empty or a number with [0] digits at most",
+  "Field must be a number with at most [0] digits": "Field must be a number with at most [0] digits",
+  "Field must be a string between 8 and [0] characters": "Field must be a string between 8 and [0] characters",
+  "Field must be a string representig a date in iso format": "Field must be a string representig a date in iso format",
+  "Field must be a string representig a date time with timezone in iso format": "Field must be a string representig a date time with timezone in iso format",
+  "Field must be a string with at most [0] characters": "Field must be a string with at most [0] characters",
+  "Field must be empty or a string between 8 and [0] characters": "Field must be empty or a string between 8 and [0] characters",
+  "Field must be empty or a string with at most [0] characters": "Field must be empty or a string with at most [0] characters",
+  "HOLA": "HOLA",
+  "Invalid Email address": "Invalid Email address",
+  "Must be a number greater than zero": "Must be a number greater than zero",
+  "Must be a number with [0] decimals places at most": "Must be a number with [0] decimals places at most",
+  "Must be an integer number": "Must be an integer number",
+  "Selection is required": "Selection is required",
+  "String must be empty or at most [0] characters": "String must be empty or at most [0] characters",
+  "You must select a date": "You must select a date",
+  "You must select date and time": "You must select date and time"
+}

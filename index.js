@@ -1,3 +1,6 @@
+import {module_i18next} from "./src/i18next.js"
+
+// console.log(en)
 import { 
     isNullOrEmpty as f_isNullOrEmpty,
     localtime as f_localtime,
@@ -31,38 +34,6 @@ import {
     RulesString as f_RulesString
 } from "./src/rules.js";
 
-// const vuetify_rules={
-//     isNullOrEmpty,
-//     localtime,
-//     capitalizeFirstLetter,
-//     parseNumber,
-//     ifnullempty,
-//     isNumber,
-//     isNumberWithRequired,
-//     isNumberMaxDigitsWithRequired,
-//     countDecimals,
-//     translate,
-//     isDateIsoString,
-//     isDatetimeAwareIsoString,
-//     isStringWithMaxDigits,
-//     f,
-//     my_round,
-//     RulesDate,
-//     RulesDateIsoString,
-//     RulesDatetime,
-//     RulesDatetimeAwareIsoString,
-//     RulesEmail,
-//     RulesFloat,
-//     RulesFloatGEZ,
-//     RulesFloatGZ,
-//     RulesFloatLEZ,
-//     RulesInteger,
-//     RulesPassword,
-//     RulesSelection,
-//     RulesString,
-// }
-
-
 export const isNullOrEmpty = f_isNullOrEmpty
 export const localtime = f_localtime
 export const capitalizeFirstLetter = f_capitalizeFirstLetter
@@ -90,3 +61,4 @@ export const RulesSelection = f_RulesSelection
 export const RulesString = f_RulesString
 export const my_round = f_my_round
 export const f = f_f
+export const i18n=module_i18next
