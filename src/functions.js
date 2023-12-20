@@ -1,23 +1,5 @@
 import moment from 'moment-timezone'
 
-export function translate(s,params=[]){
-    // let locale = Intl.DateTimeFormat().resolvedOptions().locale;
-    // // console.log("vuetify_rules detected locale:", locale);
-    // var dict=null
-    // var translated_string
-    // if (locale=="es-ES"){
-    //     dict=dict_es
-    // }
-
-    // if (dict!=null && dict.has(s)){
-    //     translated_string=dict.get(s)
-    // }else {
-    //     translated_string=s
-    // }
-
-    return f(s,params)
-}
-
 // Rounds num or return null if can't do it
 export function my_round(num, decimals = 2) {
     if (typeof num != "number" || isNaN(num)) return null

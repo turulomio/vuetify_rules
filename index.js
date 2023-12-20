@@ -1,6 +1,5 @@
 import {module_i18next, change_language as f_change_language} from "./src/i18next.js"
 
-// console.log(en)
 import { 
     isNullOrEmpty as f_isNullOrEmpty,
     localtime as f_localtime,
