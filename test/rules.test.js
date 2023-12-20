@@ -13,28 +13,28 @@ function validate_rules(value, rules, log=false){
 }
 
 function test_rules(value,rules){
-    var r=[]
-    rules.forEach(f => {
-        r.push(f(value))
-    });
-    return r
+    for (let index = 0; index < rules.length; index++) {
+        if (rules[index](value)!=true){
+            return rules[index](value)
+        }
+    }
+    return true
 }
 
 describe("Rules", () => {
     it('RulesInteger',() =>{
-        assert.equal(validate_rules(12346,  RulesInteger(6,true),   false),true);
-        assert.equal(validate_rules(1234611,  RulesInteger(6,true),   false),false);
-        assert.equal(validate_rules("1231",  RulesInteger(6,true),   false),false);
-        assert.equal(validate_rules(null,  RulesInteger(6,true),   false),false);
-        assert.equal(validate_rules("",  RulesInteger(6,true),   false),false);
+        assert.equal(test_rules(123456, RulesInteger(6,true)),true)
+        assert.equal(test_rules(1234526, RulesInteger(6,true)), 'Field must be a number with 6 digits at most')
+        assert.equal(test_rules("1231", RulesInteger(6,true)),'Field must be a number with 6 digits at most')
+        assert.equal(test_rules(null, RulesInteger(6,true)),'Field must be a number with 6 digits at most')
+        assert.equal(test_rules("", RulesInteger(6,true)),'Field must be a number with 6 digits at most')
 
-        assert.equal(validate_rules(12346,  RulesInteger(6,false),   false),true);
-        assert.equal(validate_rules(1234611,  RulesInteger(6,false),   false),false);
-        assert.equal(validate_rules("1231",  RulesInteger(6,false),   false),false);
-        assert.equal(validate_rules(null,  RulesInteger(6,false),   false),true);
-        assert.equal(validate_rules("",  RulesInteger(6,false),   false),true);
+        assert.equal(test_rules(123456, RulesInteger(6,false)),true)
+        assert.equal(test_rules(1234526, RulesInteger(6,false)), 'Field can be empty or a number with 6 digits at most')
+        assert.equal(test_rules("1231", RulesInteger(3,false)),'Field can be empty or a number with 3 digits at most')
+        assert.equal(test_rules(null, RulesInteger(6,false)), true)
+        assert.equal(test_rules("", RulesInteger(6,false)), true)
 
-        assert.equal(test_rules(null, RulesInteger(6,true))[0],'Field must be a number with 6 digits at most')
     })
 
 
