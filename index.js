@@ -1,4 +1,4 @@
-import {module_i18next} from "./src/i18next.js"
+import {module_i18next, change_language as f_change_language} from "./src/i18next.js"
 
 // console.log(en)
 import { 
@@ -62,3 +62,4 @@ export const RulesString = f_RulesString
 export const my_round = f_my_round
 export const f = f_f
 export const i18n=module_i18next
+export const change_language=f_change_language

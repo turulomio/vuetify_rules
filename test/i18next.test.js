@@ -1,13 +1,13 @@
-import {i18n} from '../index.js';
+import {i18n,change_language} from '../index.js';
 import assert from "assert"
 
 
 
 describe("i18next", () => {
   it('Translations',() =>{
-    i18n.changeLanguage("es")
+    change_language("es")
     assert.equal(i18n.t("Invalid Email address"), "Dirección de correo electrónico inválida")
-    i18n.changeLanguage("en")
+    change_language("en")
     assert.equal(i18n.t("Invalid Email address"), "Invalid Email address")
   })
 })
