@@ -9,5 +9,8 @@ Rules to validate forms with vuetify
 
 ## CHANGELOG
 
+### 0.5.0 (2023-12-10)
+- Added i18n with i18next
+
 ### 0.4.0 (2023-12-10)
 - Basic functionality

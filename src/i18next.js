@@ -21,7 +21,7 @@ i18next
         fallbackLng: "en"
     });
 var locale=Intl.DateTimeFormat().resolvedOptions().locale.slice(0,2)
-console.log("Detected language with Intl", locale )
+console.log("VuetifyRules detected language with Intl: ", locale )
 await change_language(locale)
 export const module_i18next=i18next
 
