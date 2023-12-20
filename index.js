@@ -1,4 +1,13 @@
-import {module_i18next, change_language as f_change_language} from "./src/i18next.js"
+import {
+    vuetify_rules_i18next as f_vuetify_rules_i18next, 
+    vuetify_rules_i18next_init as f_vuetify_rules_i18next_init,
+    vuetify_rules_i18next_change_language as f_vuetify_rules_i18next_change_language
+} from "./src/i18next.js"
+
+
+export const vuetify_rules_i18next=f_vuetify_rules_i18next
+export const vuetify_rules_i18next_init=f_vuetify_rules_i18next_init
+export const vuetify_rules_i18next_change_language=f_vuetify_rules_i18next_change_language
 
 import { 
     isNullOrEmpty as f_isNullOrEmpty,
@@ -60,5 +69,3 @@ export const RulesSelection = f_RulesSelection
 export const RulesString = f_RulesString
 export const my_round = f_my_round
 export const f = f_f
-export const i18n=module_i18next
-export const change_language=f_change_language

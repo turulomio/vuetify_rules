@@ -16,8 +16,7 @@ import {
     isDateIsoString,
     isDatetimeAwareIsoString,
     isStringWithMaxDigits,
-    f,
-    i18n,
+    vuetify_rules_i18next as i18n,
 } from "../index.js"
 
 
