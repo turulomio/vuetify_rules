@@ -1,4 +1,13 @@
-import {RulesInteger,RulesFloat,RulesFloatGEZ,RulesFloatLEZ,RulesFloatGZ,RulesDatetimeAwareIsoString,RulesDateIsoString} from '../index.js';
+import {
+    RulesInteger,
+    RulesFloat,
+    RulesFloatGEZ,
+    RulesFloatLEZ,
+    RulesFloatGZ,
+    RulesDatetimeAwareIsoString,
+    RulesDateIsoString,
+    RulesString,
+} from '../index.js';
 import assert from "assert"
 
 function validate_rules(value, rules, log=false){
@@ -169,5 +178,25 @@ describe("Rules", () => {
         assert.equal(validate_rules(null,  RulesDatetimeAwareIsoString(false),   false),true);
         assert.equal(validate_rules(0,  RulesDatetimeAwareIsoString(false),   false),false);
         assert.equal(validate_rules(new Date(),  RulesDatetimeAwareIsoString(false),   false),false);
+    })
+
+    it('RulesString',() =>{
+        assert.equal(validate_rules("2016-10-10T15:35:52.764Z",  RulesString(10, true), false),false);
+        assert.equal(validate_rules("2023",  RulesString(10, true), false), true);
+        assert.equal(validate_rules(2023,  RulesString(10, true), false), false);
+        assert.equal(validate_rules(2023.12,  RulesString(10, true), false), false);
+        assert.equal(validate_rules("",  RulesString(10, true), false), false);
+        assert.equal(validate_rules(null,  RulesString(10, true), false), false);
+        assert.equal(validate_rules(0,  RulesString(10, true), false), false);
+        assert.equal(validate_rules(new Date(),  RulesString(10, true),   false), false);
+
+        assert.equal(validate_rules("2016-10-10T15:35:52.764Z", RulesString(10, false), false), false);
+        assert.equal(validate_rules("2023", RulesString(10, false), false),true);
+        assert.equal(validate_rules(2023, RulesString(10, false), false),false);
+        assert.equal(validate_rules(2023.12, RulesString(10, false), false),false);
+        assert.equal(validate_rules("", RulesString(10, false), false),true);
+        assert.equal(validate_rules(null, RulesString(10, false), false),true);
+        assert.equal(validate_rules(0, RulesString(10, false), false),false);
+        assert.equal(validate_rules(new Date(), RulesString(10, false), false),false);
     })
 });

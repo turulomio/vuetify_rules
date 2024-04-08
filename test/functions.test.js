@@ -7,6 +7,7 @@ import {
   isNumber,
   isNumberWithRequired,
   isNumberMaxDigitsWithRequired,
+  isStringWithMaxDigits,
   countDecimals,
   my_round,
   localtime,
@@ -138,6 +139,16 @@ describe("Functions", () => {
     assert.equal(parseNumber("12.2"), 12.2);
     assert.equal(parseNumber("1,112.2"), NaN);
     assert.equal(parseNumber("1.112,2"), NaN);
+  })
+
+  it('isStringWithMaxDigits', () => {
+    assert.equal(isStringWithMaxDigits("",0,100), true);
+    assert.equal(isStringWithMaxDigits("",1,100), false);
+    assert.equal(isStringWithMaxDigits("Hi",0,1), false);
+    assert.equal(isStringWithMaxDigits("Hi",1,2), true);
+    assert.equal(isStringWithMaxDigits(12, 0, 100), false);
+    assert.equal(isStringWithMaxDigits(12.121, 1, 4), false);
+    assert.equal(isStringWithMaxDigits(null, 0, 100), false);
   })
 
 });
