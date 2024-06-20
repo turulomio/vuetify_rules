@@ -11,7 +11,7 @@ import {
   localtime,
   parseNumber,
   yesterday_in_isostring
-}  from '../index.js';
+}  from '../src/functions.js';
 
 
 
