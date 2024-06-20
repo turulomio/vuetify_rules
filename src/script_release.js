@@ -6,9 +6,9 @@
     - npm run start
     - npm run test
     - git commit -am vuetify_rules-${process.env.npm_package_version}
-    - git push
+    - git push --set-upstream origin vuetify_rules-${process.env.npm_package_version}
     - Merge Pull request in github
-    - New github release
+    - New github release ${process.env.npm_package_version}
     - git checkout main
     - Return to main branch: git checkout main
     - Update main branch: git pull
