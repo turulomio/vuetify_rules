@@ -18,7 +18,7 @@ class Singleton {
         await this.i18n
         .init({
             initImmediate: true,
-            debug: true, //En true se ve que estan cargadas las traducciones, Usar para ver en navegador  
+            debug: false, //En true se ve que estan cargadas las traducciones, Usar para ver en navegador  
             lng: "en",
             fallbackLng: "en",
             resources: {
@@ -88,9 +88,6 @@ const instance = new Singleton();
 // Initialize the singleton asynchronously to avoid top level await
 instance.initI18N().then(() => {
     console.log("VuetifyRules language started with en")
-    console.log(instance.i18n)
 });
-
-//   Object.freeze(instance);
 
 export default instance;
