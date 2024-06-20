@@ -1,6 +1,6 @@
 {
   "name": "vuetify_rules",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Rules and functions necessary to validate forms in vuetify",
   "main": "index.js",
   "type": "module",

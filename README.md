@@ -9,6 +9,10 @@ Rules to validate forms with vuetify
 
 ## CHANGELOG
 
+### 0.7.0 (2024-06-20)
+- I18N works with internal resources
+- Added more tests
+
 ### 0.6.0 (2023-12-20)
 - Removed await from root
 
