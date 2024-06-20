@@ -16,9 +16,11 @@ import {
     isDateIsoString,
     isDatetimeAwareIsoString,
     isStringWithMaxDigits,
-    vuetify_rules_i18next as i18n,
-} from "../index.js"
+} from "./functions.js"
 
+import singleton from './singleton.js';
+
+var i18n=singleton.i18n
 
 export function RulesInteger(maxdigits,required){
     var r
