@@ -1,5 +1,5 @@
 import moment from 'moment-timezone'
-import { round } from 'lodash-es'
+import { round} from 'lodash-es'
 
 
 // Value es un utc iso string with T and Z
@@ -123,37 +123,6 @@ export function yesterday_in_isostring(){
     return previousDate.toISOString().split('T')[0];
 }
 
-
-
-export function aoo_sort(objectsArray, sortKey)
-{
-    // Quick Sort:
-    var retVal;
-
-    if (1 < objectsArray.length)
-    {
-        var pivotIndex = Math.floor((objectsArray.length - 1) / 2);  // middle index
-        var pivotItem = objectsArray[pivotIndex];                    // value in the middle index
-        var less = [], more = [];
-
-        objectsArray.splice(pivotIndex, 1);                          // remove the item in the pivot position
-        objectsArray.forEach(function(value)
-        {
-            value[sortKey] <= pivotItem[sortKey] ?                   // compare the 'sortKey' proiperty
-                less.push(value) :
-                more.push(value) ;
-        });
-
-        retVal = aoo_sort(less, sortKey).concat([pivotItem], aoo_sort(more, sortKey));
-    }
-    else
-    {
-        retVal = objectsArray;
-    }
-    
-    return retVal;
-}
-
 export function aoo_to_string(l, key, separator=", "){
     var s=""
     l.forEach(o => {
@@ -188,6 +157,7 @@ export function aoo_to_array(l, key){
 export function percentage_generic_string(num, locale, decimals=2){
     if (num==null || isNaN(num)) return "- - - %"
     return `${round(num*100,decimals).toLocaleString(locale,{ minimumFractionDigits: decimals,  })} %`
+}
 
 export function percentage_generic_html(num, locale, decimals=2){
     if (num==null){

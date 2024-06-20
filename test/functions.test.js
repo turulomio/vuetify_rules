@@ -1,5 +1,4 @@
 import {
-  aoo_sort,
   aoo_to_string,
   ifnullempty,
   isDateIsoString,
@@ -147,12 +146,6 @@ describe("Functions", () => {
 
   it('yesterday_in_isostring', () => {
     assert.ok(typeof yesterday_in_isostring() === "string", "Value is not a string")    
-  })
-
-  it('aoo_sort', () => {
-    let sorted=aoo_sort(aoo,"a")
-    assert.equal( sorted[0]["a"], 1 , "Value is not sorted correctly") 
-    assert.equal(aoo.length, sorted.length, "Normal and sorted array length is different")   
   })
 
   it('aoo_to_string', () => {

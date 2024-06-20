@@ -12,7 +12,6 @@ import {
   aoi_to_string,
   aoo_average_ponderated,
   aoo_maxdecimals,
-  aoo_sort,
   aoo_sum,
   aoo_to_array,
   aoo_to_string,
@@ -56,13 +55,12 @@ import singleton from './src/singleton.js';
 
 export {
   singleton,
-  
+
   age_in_a_date,
   age_today,
   aoi_to_string,
   aoo_average_ponderated,
   aoo_maxdecimals,
-  aoo_sort,
   aoo_sum,
   aoo_to_array,
   aoo_to_string,
@@ -97,5 +95,5 @@ export {
   RulesInteger,
   RulesPassword,
   RulesSelection,
-  RulesString,
+  RulesString
 };
