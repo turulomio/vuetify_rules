@@ -1,10 +1,5 @@
 import moment from 'moment-timezone'
-
-// Rounds num or return null if can't do it
-export function my_round(num, decimals = 2) {
-    if (typeof num != "number" || isNaN(num)) return null
-    return Math.round(num*Math.pow(10, decimals))/Math.pow(10, decimals)
-}
+import { round, upperFirst } from 'lodash-es'
 
 
 // Value es un utc iso string with T and Z
@@ -24,10 +19,6 @@ export function localtime(value){
     return null;
 }   
 
-export function capitalizeFirstLetter(value) {
-    if (typeof value!='string') throw TypeError(f("I can't capitalize a non string: [0]", [typeof value,]))
-    return value.charAt(0).toUpperCase() + value.slice(1);
-  }
 
 export function parseNumber(value){
     if (typeof value==='number') return value
@@ -141,7 +132,7 @@ export function aoo_sort(objectsArray, sortKey)
 
     if (1 < objectsArray.length)
     {
-        var pivotIndex = Math.floor((objectsArray.length ) / 2);  // middle index
+        var pivotIndex = Math.floor((objectsArray.length - 1) / 2);  // middle index
         var pivotItem = objectsArray[pivotIndex];                    // value in the middle index
         var less = [], more = [];
 
@@ -196,8 +187,7 @@ export function aoo_to_array(l, key){
 
 export function percentage_generic_string(num, locale, decimals=2){
     if (num==null || isNaN(num)) return "- - - %"
-    return `${my_round(num*100,decimals).toLocaleString(locale,{ minimumFractionDigits: decimals,  })} %`
-}
+    return `${round(num*100,decimals).toLocaleString(locale,{ minimumFractionDigits: decimals,  })} %`
 
 export function percentage_generic_html(num, locale, decimals=2){
     if (num==null){
@@ -229,7 +219,7 @@ export function aoo_maxdecimals(lo, key){
 export function aoo_sum(lo,key,decimals=null){
     if (lo.length==0) return 0
     if (decimals==null) decimals=listobjects_maxdecimals(lo,key)
-    return my_round(lo.reduce((accum,item) => accum + item[key], 0), decimals)
+    return round(lo.reduce((accum,item) => accum + item[key], 0), decimals)
 }
 
 export function aoo_average_ponderated(lo,key1, key2){

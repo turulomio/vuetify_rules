@@ -39,6 +39,7 @@ import {
 import assert from "assert"
 
 describe("Functions", () => {
+
   let aoo
   beforeEach(
     function (){
@@ -127,16 +128,6 @@ describe("Functions", () => {
   })
 
 
-  it('my_round', () => {
-    assert.equal(my_round(1.99, 2),1.99)
-    assert.equal(my_round(1.999, 2), 2)
-    assert.equal(my_round(1.001, 2), 1)
-    assert.equal(my_round("", 2), null)
-    assert.equal(my_round(0, 2), 0)
-    assert.equal(my_round(null, 2), null)
-    assert.equal(my_round(NaN, 2), null)
-})
-
   it ('localtime', () => {
     assert.equal(localtime(1.99), "")
     assert.equal(localtime(""), "")
@@ -148,15 +139,6 @@ describe("Functions", () => {
     assert.equal(localtime("2016-10-10T15:35:52.764Z").slice(14,19), "35:52") //Due to github localzone, automatic tests
     assert.equal(localtime("2023-12-10T15:35:52.764Z").slice(14,19), "35:52")
   })  
-
-  it ('capitalizeFirstLetter', () => {
-    assert.equal(capitalizeFirstLetter("turulomio"), "Turulomio")
-    assert.equal(capitalizeFirstLetter("Turulomio"), "Turulomio")
-    assert.equal(capitalizeFirstLetter(""), "")
-    assert.throws(() => capitalizeFirstLetter(null),TypeError)
-    assert.throws(() => capitalizeFirstLetter(1.99),TypeError)
-  })
-
 
   it('parseNumber', () => {
     assert.equal(parseNumber(""), NaN);

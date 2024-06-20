@@ -16,7 +16,6 @@ import {
   aoo_sum,
   aoo_to_array,
   aoo_to_string,
-  capitalizeFirstLetter,
   array_from_map,
   f,
   getBase64,
@@ -30,7 +29,6 @@ import {
   countDecimals,
   isStringWithMaxDigits,
   localtime,
-  my_round,
   parseNumber,
   percentage_generic_string,
   percentage_generic_html,
@@ -58,7 +56,6 @@ import singleton from './src/singleton.js';
 
 export {
   singleton,
-
   age_in_a_date,
   age_today,
   aoi_to_string,
@@ -68,7 +65,6 @@ export {
   aoo_sum,
   aoo_to_array,
   aoo_to_string,
-  capitalizeFirstLetter,
   array_from_map,
   f,
   getBase64,
@@ -82,7 +78,6 @@ export {
   countDecimals,
   isStringWithMaxDigits,
   localtime,
-  my_round,
   parseNumber,
   percentage_generic_string,
   percentage_generic_html,
