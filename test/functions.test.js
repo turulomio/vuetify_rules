@@ -3,7 +3,7 @@ import {
   capitalizeFirstLetter,
   ifnullempty,
   isDateIsoString,
-  isNullOrEmpty,
+  isNoE,
   isNumber,
   isNumberWithRequired,
   isNumberMaxDigitsWithRequired,
@@ -21,11 +21,11 @@ import {
 import assert from "assert"
 
 describe("Functions", () => {
-  it('isNullOrEmpty', () => {
-    assert.equal(isNullOrEmpty(""), true);
-    assert.equal(isNullOrEmpty(null), true);
-    assert.equal(isNullOrEmpty(5), false);
-    assert.equal(isNullOrEmpty(0), false);
+  it('isNoE', () => {
+    assert.equal(isNoE(""), true);
+    assert.equal(isNoE(null), true);
+    assert.equal(isNoE(5), false);
+    assert.equal(isNoE(0), false);
   });
 
 

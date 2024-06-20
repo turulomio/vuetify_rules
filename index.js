@@ -1,65 +1,44 @@
-// import {
-//     vuetify_rules_i18next, 
-//     vuetify_rules_i18next_init,
-//     vuetify_rules_i18next_change_language
-// } from "./src/i18next.js"
+/*
+  Acronyms:
+    - aoo: Array of objects
+    - aoi: Arroy of integers
 
 
-// export const vuetify_rules_i18next=f_vuetify_rules_i18next
-// export const vuetify_rules_i18next_init=f_vuetify_rules_i18next_init
-// export const vuetify_rules_i18next_change_language=f_vuetify_rules_i18next_change_language
+*/
 
 import { 
-    isNullOrEmpty,
-    localtime,
-    capitalizeFirstLetter,
-    parseNumber,
-    ifnullempty,
-    isNumber,
-    isNumberWithRequired,
-    isNumberMaxDigitsWithRequired,
-    countDecimals,
-    isDateIsoString,
-    isDatetimeAwareIsoString,
-    isStringWithMaxDigits,
-    f,
-    my_round
-} from "./src/functions.js";
-
-import { 
-    RulesDate,
-    RulesDateIsoString,
-    RulesDatetime,
-    RulesDatetimeAwareIsoString,
-    RulesEmail,
-    RulesFloat,
-    RulesFloatGEZ,
-    RulesFloatGZ,
-    RulesFloatLEZ,
-    RulesInteger,
-    RulesPassword,
-    RulesSelection,
-    RulesString
-} from "./src/rules.js";
-
-import singleton from './src/singleton.js';
-
-export {
-  singleton,
-  isNullOrEmpty,
-  localtime,
+  age_in_a_date,
+  age_today,
+  aoi_to_string,
+  aoo_average_ponderated,
+  aoo_maxdecimals,
+  aoo_sort,
+  aoo_sum,
+  aoo_to_array,
+  aoo_to_string,
   capitalizeFirstLetter,
-  parseNumber,
+  array_from_map,
+  f,
+  getBase64,
   ifnullempty,
+  isDateIsoString,
+  isDatetimeAwareIsoString,
+  isNoE,
   isNumber,
   isNumberWithRequired,
   isNumberMaxDigitsWithRequired,
   countDecimals,
-  isDateIsoString,
-  isDatetimeAwareIsoString,
   isStringWithMaxDigits,
-  f,
+  localtime,
   my_round,
+  parseNumber,
+  percentage_generic_string,
+  percentage_generic_html,
+  string_to_aoi,
+  yesterday_in_isostring,
+} from "./src/functions.js";
+
+import { 
   RulesDate,
   RulesDateIsoString,
   RulesDatetime,
@@ -72,5 +51,55 @@ export {
   RulesInteger,
   RulesPassword,
   RulesSelection,
-  RulesString
+  RulesString,
+} from "./src/rules.js";
+
+import singleton from './src/singleton.js';
+
+export {
+  singleton,
+
+  age_in_a_date,
+  age_today,
+  aoi_to_string,
+  aoo_average_ponderated,
+  aoo_maxdecimals,
+  aoo_sort,
+  aoo_sum,
+  aoo_to_array,
+  aoo_to_string,
+  capitalizeFirstLetter,
+  array_from_map,
+  f,
+  getBase64,
+  ifnullempty,
+  isDateIsoString,
+  isDatetimeAwareIsoString,
+  isNoE,
+  isNumber,
+  isNumberWithRequired,
+  isNumberMaxDigitsWithRequired,
+  countDecimals,
+  isStringWithMaxDigits,
+  localtime,
+  my_round,
+  parseNumber,
+  percentage_generic_string,
+  percentage_generic_html,
+  string_to_aoi,
+  yesterday_in_isostring,
+
+  RulesDate,
+  RulesDateIsoString,
+  RulesDatetime,
+  RulesDatetimeAwareIsoString,
+  RulesEmail,
+  RulesFloat,
+  RulesFloatGEZ,
+  RulesFloatGZ,
+  RulesFloatLEZ,
+  RulesInteger,
+  RulesPassword,
+  RulesSelection,
+  RulesString,
 };

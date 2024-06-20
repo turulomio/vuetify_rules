@@ -43,7 +43,7 @@ export function ifnullempty(value){
     return value
 }
 
-export function isNullOrEmpty(n){
+export function isNoE(n){
     if (n==="") return true
     if (n===0) return false
     if (n===null) return true
@@ -61,7 +61,7 @@ export function isNumberWithRequired(n,required){
     if (required==true){
         if (isNumber(n)) r= true
     } else {
-        if (isNullOrEmpty(n) || isNumber(n)) r= true
+        if (isNoE(n) || isNumber(n)) r= true
     }
     return r
 }
@@ -72,7 +72,7 @@ export function isNumberMaxDigitsWithRequired(n,required,maxdigits){
     if (required==true){
         if (isNumberWithRequired(n,required) && n.toString().length<=maxdigits) return true
     } else { //required false
-        if (isNullOrEmpty(n))  return true
+        if (isNoE(n))  return true
         if (isNumberWithRequired(n,required) && n.toString().length<=maxdigits) return true
     }
     return false
@@ -134,7 +134,7 @@ export function yesterday_in_isostring(){
 
 
 
-export function sortObjectsArray(objectsArray, sortKey)
+export function aoo_sort(objectsArray, sortKey)
 {
     // Quick Sort:
     var retVal;
@@ -163,28 +163,28 @@ export function sortObjectsArray(objectsArray, sortKey)
     return retVal;
 }
 
-export function arrayobjects_to_stringofstrings(l, key){
+export function aoo_to_string(l, key){
     var s=""
     l.forEach(o => s=s+o[key].toString() + ", ")
     return s.slice(0,-2)
 }
 
 
-export function arrayofintegers_to_stringofintegers(l){
+export function aoi_to_string(l){
     var s=""
     l.forEach(o => s=s+o.toString() + ", ")
     return s.slice(0,-2)
 }
 
 
-export function stringofintegers_to_arrayofintegers(s,separator=", "){
+export function string_to_aoi(s,separator=", "){
     var l=[]
     s.split(separator).forEach(o => l.push(parseInt(o)))
     return l
 }
 
 
-export function arrayobjects_to_array(l, key){
+export function aoo_to_array(l, key){
     var s=[]
     l.forEach(o => s.push(o[key]))
     return s
@@ -210,7 +210,7 @@ export function percentage_generic_html(num, locale, decimals=2){
 
 
 // Find the maximum number of decimal places
-export function listobjects_maxdecimals(lo, key){
+export function aoo_maxdecimals(lo, key){
     let maxDecimals = 0;
     lo.forEach(o => {
         const decimalPart = o[key].toString().split('.')[1];
@@ -223,13 +223,13 @@ export function listobjects_maxdecimals(lo, key){
 }
 
 // Sums values in a lo respecting the max number of decimals
-export function listobjects_sum(lo,key,decimals=null){
+export function aoo_sum(lo,key,decimals=null){
     if (lo.length==0) return 0
     if (decimals==null) decimals=listobjects_maxdecimals(lo,key)
     return my_round(lo.reduce((accum,item) => accum + item[key], 0), decimals)
 }
 
-export function listobjects_average_ponderated(lo,key1, key2){
+export function aoo_average_ponderated(lo,key1, key2){
     var prod=0;
     var total=0;
     var i;
@@ -264,7 +264,7 @@ export function getBase64(file) {
     })
 }
 
-export function getArrayFromMap(catalog){
+export function array_from_map(catalog){
     //Catalog is a map
     return Array.from(catalog).map(([,value]) => (value))
     
