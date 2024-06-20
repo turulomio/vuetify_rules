@@ -1,5 +1,5 @@
 import moment from 'moment-timezone'
-import { round} from 'lodash-es'
+import { round, isFinite} from 'lodash-es'
 
 
 // Value es un utc iso string with T and Z
