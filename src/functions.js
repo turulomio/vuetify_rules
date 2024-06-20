@@ -188,7 +188,6 @@ export function aoo_to_array(l, key){
 export function percentage_generic_string(num, locale, decimals=2){
     if (num==null || isNaN(num)) return "- - - %"
     return `${round(num*100,decimals).toLocaleString(locale,{ minimumFractionDigits: decimals,  })} %`
-}
 
 export function percentage_generic_html(num, locale, decimals=2){
     if (num==null){

@@ -1,15 +1,35 @@
 
 import {
+
+  age_in_a_date,
+  age_today,
+  aoi_to_string,
+  aoo_average_ponderated,
+  aoo_maxdecimals,
+  aoo_sort,
+  aoo_sum,
+  aoo_to_array,
+  aoo_to_string,
+  capitalizeFirstLetter,
+  array_from_map,
+  f,
+  getBase64,
   ifnullempty,
   isDateIsoString,
+  isDatetimeAwareIsoString,
   isNoE,
   isNumber,
   isNumberWithRequired,
   isNumberMaxDigitsWithRequired,
-  isStringWithMaxDigits,
   countDecimals,
+  isStringWithMaxDigits,
   localtime,
-  parseNumber
+  my_round,
+  parseNumber,
+  percentage_generic_string,
+  percentage_generic_html,
+  string_to_aoi,
+  yesterday_in_isostring,
 }  from '../index.js';
 
 
@@ -19,6 +39,19 @@ import {
 import assert from "assert"
 
 describe("Functions", () => {
+
+  let aoo
+  beforeEach(
+    function (){
+      aoo=[
+        {a:3,b:null, c:1.12, d:new Date()},
+        {a:2,b:null, c:3.12, d:new Date()},
+        {a:1,b:3, c:2.12, d:new Date()},
+      ]
+    }
+  )
+
+
   it('isNoE', () => {
     assert.equal(isNoE(""), true);
     assert.equal(isNoE(null), true);
@@ -128,6 +161,20 @@ describe("Functions", () => {
     assert.equal(isStringWithMaxDigits(12, 0, 100), false);
     assert.equal(isStringWithMaxDigits(12.121, 1, 4), false);
     assert.equal(isStringWithMaxDigits(null, 0, 100), false);
+  })
+
+  it('yesterday_in_isostring', () => {
+    assert.ok(typeof yesterday_in_isostring() === "string", "Value is not a string")    
+  })
+
+  it('aoo_sort', () => {
+    let sorted=aoo_sort(aoo,"a")
+    assert.equal( sorted[0]["a"], 1 , "Value is not sorted correctly") 
+    assert.equal(aoo.length, sorted.length, "Normal and sorted array length is different")   
+  })
+
+  it('aoo_to_string', () => {
+    assert.equal( aoo_to_string(aoo, "a"), "3, 2, 1" , "String is not generated correctly")    
   })
 
 });
