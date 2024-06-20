@@ -141,7 +141,7 @@ export function aoo_sort(objectsArray, sortKey)
 
     if (1 < objectsArray.length)
     {
-        var pivotIndex = Math.floor((objectsArray.length - 1) / 2);  // middle index
+        var pivotIndex = Math.floor((objectsArray.length ) / 2);  // middle index
         var pivotItem = objectsArray[pivotIndex];                    // value in the middle index
         var less = [], more = [];
 
@@ -153,7 +153,7 @@ export function aoo_sort(objectsArray, sortKey)
                 more.push(value) ;
         });
 
-        retVal = sortObjectsArray(less, sortKey).concat([pivotItem], sortObjectsArray(more, sortKey));
+        retVal = aoo_sort(less, sortKey).concat([pivotItem], aoo_sort(more, sortKey));
     }
     else
     {
@@ -163,10 +163,13 @@ export function aoo_sort(objectsArray, sortKey)
     return retVal;
 }
 
-export function aoo_to_string(l, key){
+export function aoo_to_string(l, key, separator=", "){
     var s=""
-    l.forEach(o => s=s+o[key].toString() + ", ")
-    return s.slice(0,-2)
+    l.forEach(o => {
+        s=s+o[key].toString() + separator
+        console.log(o)
+    })
+    return s.slice(0,-separator.length)
 }
 
 
