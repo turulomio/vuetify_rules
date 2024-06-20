@@ -56,6 +56,7 @@ import singleton from './src/singleton.js';
 
 export {
   singleton,
+  
   age_in_a_date,
   age_today,
   aoi_to_string,
