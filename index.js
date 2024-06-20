@@ -1,65 +1,86 @@
-// import {
-//     vuetify_rules_i18next, 
-//     vuetify_rules_i18next_init,
-//     vuetify_rules_i18next_change_language
-// } from "./src/i18next.js"
+/*
+  Acronyms:
+    - aoo: Array of objects
+    - aoi: Arroy of integers
 
 
-// export const vuetify_rules_i18next=f_vuetify_rules_i18next
-// export const vuetify_rules_i18next_init=f_vuetify_rules_i18next_init
-// export const vuetify_rules_i18next_change_language=f_vuetify_rules_i18next_change_language
+*/
 
 import { 
-    isNullOrEmpty,
-    localtime,
-    capitalizeFirstLetter,
-    parseNumber,
-    ifnullempty,
-    isNumber,
-    isNumberWithRequired,
-    isNumberMaxDigitsWithRequired,
-    countDecimals,
-    isDateIsoString,
-    isDatetimeAwareIsoString,
-    isStringWithMaxDigits,
-    f,
-    my_round
+  age_in_a_date,
+  age_today,
+  aoi_to_string,
+  aoo_average_ponderated,
+  aoo_maxdecimals,
+  aoo_sum,
+  aoo_to_array,
+  aoo_to_string,
+  array_from_map,
+  f,
+  getBase64,
+  ifnullempty,
+  isDateIsoString,
+  isDatetimeAwareIsoString,
+  isNoE,
+  isNumberWithRequired,
+  isNumberMaxDigitsWithRequired,
+  countDecimals,
+  isStringWithMaxDigits,
+  localtime,
+  parseNumber,
+  percentage_generic_string,
+  percentage_generic_html,
+  string_to_aoi,
+  yesterday_in_isostring,
 } from "./src/functions.js";
 
 import { 
-    RulesDate,
-    RulesDateIsoString,
-    RulesDatetime,
-    RulesDatetimeAwareIsoString,
-    RulesEmail,
-    RulesFloat,
-    RulesFloatGEZ,
-    RulesFloatGZ,
-    RulesFloatLEZ,
-    RulesInteger,
-    RulesPassword,
-    RulesSelection,
-    RulesString
+  RulesDate,
+  RulesDateIsoString,
+  RulesDatetime,
+  RulesDatetimeAwareIsoString,
+  RulesEmail,
+  RulesFloat,
+  RulesFloatGEZ,
+  RulesFloatGZ,
+  RulesFloatLEZ,
+  RulesInteger,
+  RulesPassword,
+  RulesSelection,
+  RulesString,
 } from "./src/rules.js";
 
 import singleton from './src/singleton.js';
 
 export {
   singleton,
-  isNullOrEmpty,
-  localtime,
-  capitalizeFirstLetter,
-  parseNumber,
+
+  age_in_a_date,
+  age_today,
+  aoi_to_string,
+  aoo_average_ponderated,
+  aoo_maxdecimals,
+  aoo_sum,
+  aoo_to_array,
+  aoo_to_string,
+  array_from_map,
+  f,
+  getBase64,
   ifnullempty,
-  isNumber,
+  isDateIsoString,
+  isDatetimeAwareIsoString,
+  isNoE,
   isNumberWithRequired,
   isNumberMaxDigitsWithRequired,
   countDecimals,
-  isDateIsoString,
-  isDatetimeAwareIsoString,
   isStringWithMaxDigits,
-  f,
-  my_round,
+  localtime,
+  parseNumber,
+  percentage_generic_string,
+  percentage_generic_html,
+  string_to_aoi,
+  yesterday_in_isostring,
+
   RulesDate,
   RulesDateIsoString,
   RulesDatetime,

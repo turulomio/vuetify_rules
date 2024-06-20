@@ -1,18 +1,17 @@
-
 import {
-  capitalizeFirstLetter,
+  aoo_to_string,
   ifnullempty,
   isDateIsoString,
-  isNullOrEmpty,
+  isNoE,
   isNumber,
   isNumberWithRequired,
   isNumberMaxDigitsWithRequired,
-  isStringWithMaxDigits,
   countDecimals,
-  my_round,
+  isStringWithMaxDigits,
   localtime,
-  parseNumber
-}  from '../index.js';
+  parseNumber,
+  yesterday_in_isostring
+}  from '../src/functions.js';
 
 
 
@@ -21,11 +20,24 @@ import {
 import assert from "assert"
 
 describe("Functions", () => {
-  it('isNullOrEmpty', () => {
-    assert.equal(isNullOrEmpty(""), true);
-    assert.equal(isNullOrEmpty(null), true);
-    assert.equal(isNullOrEmpty(5), false);
-    assert.equal(isNullOrEmpty(0), false);
+
+  let aoo
+  beforeEach(
+    function (){
+      aoo=[
+        {a:3,b:null, c:1.12, d:new Date()},
+        {a:2,b:null, c:3.12, d:new Date()},
+        {a:1,b:3, c:2.12, d:new Date()},
+      ]
+    }
+  )
+
+
+  it('isNoE', () => {
+    assert.equal(isNoE(""), true);
+    assert.equal(isNoE(null), true);
+    assert.equal(isNoE(5), false);
+    assert.equal(isNoE(0), false);
   });
 
 
@@ -97,16 +109,6 @@ describe("Functions", () => {
   })
 
 
-  it('my_round', () => {
-    assert.equal(my_round(1.99, 2),1.99)
-    assert.equal(my_round(1.999, 2), 2)
-    assert.equal(my_round(1.001, 2), 1)
-    assert.equal(my_round("", 2), null)
-    assert.equal(my_round(0, 2), 0)
-    assert.equal(my_round(null, 2), null)
-    assert.equal(my_round(NaN, 2), null)
-})
-
   it ('localtime', () => {
     assert.equal(localtime(1.99), "")
     assert.equal(localtime(""), "")
@@ -118,15 +120,6 @@ describe("Functions", () => {
     assert.equal(localtime("2016-10-10T15:35:52.764Z").slice(14,19), "35:52") //Due to github localzone, automatic tests
     assert.equal(localtime("2023-12-10T15:35:52.764Z").slice(14,19), "35:52")
   })  
-
-  it ('capitalizeFirstLetter', () => {
-    assert.equal(capitalizeFirstLetter("turulomio"), "Turulomio")
-    assert.equal(capitalizeFirstLetter("Turulomio"), "Turulomio")
-    assert.equal(capitalizeFirstLetter(""), "")
-    assert.throws(() => capitalizeFirstLetter(null),TypeError)
-    assert.throws(() => capitalizeFirstLetter(1.99),TypeError)
-  })
-
 
   it('parseNumber', () => {
     assert.equal(parseNumber(""), NaN);
@@ -149,6 +142,14 @@ describe("Functions", () => {
     assert.equal(isStringWithMaxDigits(12, 0, 100), false);
     assert.equal(isStringWithMaxDigits(12.121, 1, 4), false);
     assert.equal(isStringWithMaxDigits(null, 0, 100), false);
+  })
+
+  it('yesterday_in_isostring', () => {
+    assert.ok(typeof yesterday_in_isostring() === "string", "Value is not a string")    
+  })
+
+  it('aoo_to_string', () => {
+    assert.equal( aoo_to_string(aoo, "a"), "3, 2, 1" , "String is not generated correctly")    
   })
 
 });

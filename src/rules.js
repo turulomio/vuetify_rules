@@ -9,7 +9,7 @@
 
 
 import {
-    isNullOrEmpty,
+    isNoE,
     isNumber,
     isNumberMaxDigitsWithRequired,
     countDecimals,
@@ -26,8 +26,8 @@ export function RulesInteger(maxdigits,required){
     var r
     if (required==false){
         r= [
-            v => (isNullOrEmpty(v) || isNumberMaxDigitsWithRequired(v,required,maxdigits)) || i18n.t('Field can be empty or a number with {{maxdigits}} digits at most',{maxdigits}),
-            v => (isNullOrEmpty(v) || isNumber(v) && countDecimals(v)<=0) || i18n.t('Must be an integer number'),
+            v => (isNoE(v) || isNumberMaxDigitsWithRequired(v,required,maxdigits)) || i18n.t('Field can be empty or a number with {{maxdigits}} digits at most',{maxdigits}),
+            v => (isNoE(v) || isNumber(v) && countDecimals(v)<=0) || i18n.t('Must be an integer number'),
         ]
     } else { // required==true
         r= [
@@ -45,8 +45,8 @@ export function RulesFloat (maxdigits, required, maxdecimals){
     var r
     if (required==false){
         r= [
-            v => (isNullOrEmpty(v) || isNumberMaxDigitsWithRequired(v,required,maxdigits)) ||i18n.t('Field can be empty or a number with {{maxdigits}} digits at most',{maxdigits}),
-            v => (isNullOrEmpty(v) || isNumber(v) && countDecimals(v)<=maxdecimals) || i18n.t('Must be a number with {{maxdecimals}} decimals places at most', {maxdecimals}),
+            v => (isNoE(v) || isNumberMaxDigitsWithRequired(v,required,maxdigits)) ||i18n.t('Field can be empty or a number with {{maxdigits}} digits at most',{maxdigits}),
+            v => (isNoE(v) || isNumber(v) && countDecimals(v)<=maxdecimals) || i18n.t('Must be a number with {{maxdecimals}} decimals places at most', {maxdecimals}),
         ]
     } else { // required==true
         r= [
@@ -62,9 +62,9 @@ export function RulesFloatGZ (maxdigits, required, maxdecimals){
     var r
     if (required==false){
         r= [
-            v => (isNullOrEmpty(v) || isNumberMaxDigitsWithRequired(v,required,maxdigits)) ||i18n.t('Field can be empty or a number with {{maxdigits}} digits at most',{maxdigits}),
-            v => (isNullOrEmpty(v) || (isNumber(v) && v>0)) || i18n.t('Must be a number greater than zero'),
-            v => (isNullOrEmpty(v) || (isNumber(v) && countDecimals(v)<=maxdecimals)) || i18n.t('Must be a number with {{maxdecimals}} decimals places at most', {maxdecimals}),
+            v => (isNoE(v) || isNumberMaxDigitsWithRequired(v,required,maxdigits)) ||i18n.t('Field can be empty or a number with {{maxdigits}} digits at most',{maxdigits}),
+            v => (isNoE(v) || (isNumber(v) && v>0)) || i18n.t('Must be a number greater than zero'),
+            v => (isNoE(v) || (isNumber(v) && countDecimals(v)<=maxdecimals)) || i18n.t('Must be a number with {{maxdecimals}} decimals places at most', {maxdecimals}),
         ]
     } else { // required==true
         r= [
@@ -80,9 +80,9 @@ export function RulesFloatGEZ (maxdigits, required, maxdecimals){
     var r
     if (required==false){
         r= [
-            v => (isNullOrEmpty(v) || isNumberMaxDigitsWithRequired(v,required,maxdigits)) ||i18n.t('Field can be empty or a number with {{maxdigits}} digits at most',{maxdigits}),
-            v => (isNullOrEmpty(v) || isNumber(v) && v>=0) || i18n.t('Must be a number greater than zero'),
-            v => (isNullOrEmpty(v) || isNumber(v) && countDecimals(v)<=maxdecimals) || i18n.t('Must be a number with {{maxdecimals}} decimals places at most', {maxdecimals}),
+            v => (isNoE(v) || isNumberMaxDigitsWithRequired(v,required,maxdigits)) ||i18n.t('Field can be empty or a number with {{maxdigits}} digits at most',{maxdigits}),
+            v => (isNoE(v) || isNumber(v) && v>=0) || i18n.t('Must be a number greater than zero'),
+            v => (isNoE(v) || isNumber(v) && countDecimals(v)<=maxdecimals) || i18n.t('Must be a number with {{maxdecimals}} decimals places at most', {maxdecimals}),
         ]
     } else { // required==true
         r= [
@@ -97,9 +97,9 @@ export function RulesFloatLEZ(maxdigits, required, maxdecimals){
     var r
     if (required==false){
         r= [
-            v => (isNullOrEmpty(v) || isNumberMaxDigitsWithRequired(v,required,maxdigits)) || i18n.t('Field can be empty or a number with {{maxdigits}} digits at most',{maxdigits}),
-            v => (isNullOrEmpty(v) || isNumber(v) && v<=0) || i18n.t('Must be a number greater than zero'),
-            v => (isNullOrEmpty(v) || isNumber(v) && countDecimals(v)<=maxdecimals) || i18n.t('Must be a number with {{maxdecimals}} decimals places at most', {maxdecimals}),
+            v => (isNoE(v) || isNumberMaxDigitsWithRequired(v,required,maxdigits)) || i18n.t('Field can be empty or a number with {{maxdigits}} digits at most',{maxdigits}),
+            v => (isNoE(v) || isNumber(v) && v<=0) || i18n.t('Must be a number greater than zero'),
+            v => (isNoE(v) || isNumber(v) && countDecimals(v)<=maxdecimals) || i18n.t('Must be a number with {{maxdecimals}} decimals places at most', {maxdecimals}),
         ]
     } else { // required==true
         r= [
@@ -116,11 +116,11 @@ export function RulesDateIsoString(required){
     var r
     if (required==true){
         r= [
-            v => (!isNullOrEmpty(v) && isDateIsoString(v))|| error,
+            v => (!isNoE(v) && isDateIsoString(v))|| error,
         ]
     } else {
         r= [
-            v => (isNullOrEmpty(v) || isDateIsoString(v))|| error,
+            v => (isNoE(v) || isDateIsoString(v))|| error,
         ]
     }
 
@@ -133,11 +133,11 @@ export function RulesDatetimeAwareIsoString(required){
     var r
     if (required==true){
         r= [
-            v => (!isNullOrEmpty(v) && isDatetimeAwareIsoString(v))|| error,
+            v => (!isNoE(v) && isDatetimeAwareIsoString(v))|| error,
         ]
     } else {
         r= [
-            v => (isNullOrEmpty(v) || isDatetimeAwareIsoString(v))|| error,
+            v => (isNoE(v) || isDatetimeAwareIsoString(v))|| error,
         ]
     }
 
@@ -178,11 +178,11 @@ export function RulesString(maxdigits,required){
     i18n.t("String must be empty or at most {{maxdigits}} characters", {maxdigits})
     if (required==true){
         r= [
-            v => (!isNullOrEmpty(v) && isStringWithMaxDigits(v,1,maxdigits))|| error_required,
+            v => (!isNoE(v) && isStringWithMaxDigits(v,1,maxdigits))|| error_required,
         ]
     } else {
         r= [
-            v => (isNullOrEmpty(v) || isStringWithMaxDigits(v,0,maxdigits))|| error_not_required,
+            v => (isNoE(v) || isStringWithMaxDigits(v,0,maxdigits))|| error_not_required,
         ]
     }
     return r
@@ -195,11 +195,11 @@ export function RulesPassword(maxdigits,required){
     var r
     if (required==true){
         r= [
-            v => (!isNullOrEmpty(v) && isStringWithMaxDigits(v,8,maxdigits))|| error_required,
+            v => (!isNoE(v) && isStringWithMaxDigits(v,8,maxdigits))|| error_required,
         ]
     } else {
         r= [
-            v => (isNullOrEmpty(v) || isStringWithMaxDigits(v,8,maxdigits))|| error_not_required,
+            v => (isNoE(v) || isStringWithMaxDigits(v,8,maxdigits))|| error_not_required,
         ]
     }
     return r
