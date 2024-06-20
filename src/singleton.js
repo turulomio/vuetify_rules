@@ -5,7 +5,7 @@ class Singleton {
         if (!Singleton.instance) {
             Singleton.instance = this;
             this.language="en"
-            this.i18n=null
+            this.i18n=i18next
             return Singleton.instance;
 
         } else {
@@ -15,7 +15,7 @@ class Singleton {
     }
   
     async initI18N(){
-        i18next
+        await this.i18n
         .init({
             initImmediate: true,
             debug: true, //En true se ve que estan cargadas las traducciones, Usar para ver en navegador  
@@ -71,9 +71,6 @@ class Singleton {
               escapeValue: false // React already safes from XSS
             }
         });
-        console.log("VuetifyRules language started with en")
-        console.log(this.i18n)
-        return i18next
     }
     // Example method
     async setLanguage(lang) {
@@ -85,11 +82,15 @@ class Singleton {
     getLanguage() {
       return this.language;
     }
-  }
+}
   
-  const instance = new Singleton();
-  instance.i18n=await instance.initI18N()
+const instance = new Singleton();
+// Initialize the singleton asynchronously to avoid top level await
+instance.initI18N().then(() => {
+    console.log("VuetifyRules language started with en")
+    console.log(instance.i18n)
+});
+
 //   Object.freeze(instance);
-  
-  export default instance;
-  
+
+export default instance;
