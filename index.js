@@ -10,7 +10,7 @@
 // export const vuetify_rules_i18next_change_language=f_vuetify_rules_i18next_change_language
 
 import { 
-    isNullOrEmpty,
+    isNoE,
     localtime,
     capitalizeFirstLetter,
     parseNumber,
@@ -23,7 +23,6 @@ import {
     isDatetimeAwareIsoString,
     isStringWithMaxDigits,
     f,
-    my_round
 } from "./src/functions.js";
 
 import { 
@@ -46,7 +45,7 @@ import singleton from './src/singleton.js';
 
 export {
   singleton,
-  isNullOrEmpty,
+  isNoE,
   localtime,
   capitalizeFirstLetter,
   parseNumber,
@@ -59,7 +58,6 @@ export {
   isDatetimeAwareIsoString,
   isStringWithMaxDigits,
   f,
-  my_round,
   RulesDate,
   RulesDateIsoString,
   RulesDatetime,

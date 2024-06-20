@@ -3,13 +3,12 @@ import {
   capitalizeFirstLetter,
   ifnullempty,
   isDateIsoString,
-  isNullOrEmpty,
+  isNoE,
   isNumber,
   isNumberWithRequired,
   isNumberMaxDigitsWithRequired,
   isStringWithMaxDigits,
   countDecimals,
-  my_round,
   localtime,
   parseNumber
 }  from '../index.js';
@@ -21,11 +20,11 @@ import {
 import assert from "assert"
 
 describe("Functions", () => {
-  it('isNullOrEmpty', () => {
-    assert.equal(isNullOrEmpty(""), true);
-    assert.equal(isNullOrEmpty(null), true);
-    assert.equal(isNullOrEmpty(5), false);
-    assert.equal(isNullOrEmpty(0), false);
+  it('isNoE', () => {
+    assert.equal(isNoE(""), true);
+    assert.equal(isNoE(null), true);
+    assert.equal(isNoE(5), false);
+    assert.equal(isNoE(0), false);
   });
 
 
@@ -96,16 +95,6 @@ describe("Functions", () => {
       assert.equal(countDecimals("12"),0);
   })
 
-
-  it('my_round', () => {
-    assert.equal(my_round(1.99, 2),1.99)
-    assert.equal(my_round(1.999, 2), 2)
-    assert.equal(my_round(1.001, 2), 1)
-    assert.equal(my_round("", 2), null)
-    assert.equal(my_round(0, 2), 0)
-    assert.equal(my_round(null, 2), null)
-    assert.equal(my_round(NaN, 2), null)
-})
 
   it ('localtime', () => {
     assert.equal(localtime(1.99), "")
