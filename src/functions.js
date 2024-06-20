@@ -1,5 +1,5 @@
 import moment from 'moment-timezone'
-import { round } from 'lodash-es'
+import { round, upperFirst } from 'lodash-es'
 
 
 // Value es un utc iso string with T and Z
@@ -19,10 +19,6 @@ export function localtime(value){
     return null;
 }   
 
-export function capitalizeFirstLetter(value) {
-    if (typeof value!='string') throw TypeError(f("I can't capitalize a non string: [0]", [typeof value,]))
-    return value.charAt(0).toUpperCase() + value.slice(1);
-  }
 
 export function parseNumber(value){
     if (typeof value==='number') return value
