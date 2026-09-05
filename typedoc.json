@@ -7,9 +7,17 @@
   ],
   "out": "docs_html",
   "name": "vuetify_rules",
-  "readme": "README.md",
+  "readme": "none",
   "githubPages": true,
   "tsconfig": "tsconfig.json",
   "categorizeByGroup": true,
-  "excludePrivate": true
+  "excludePrivate": true,
+  "navigationLinks": {
+    "GitHub": "https://github.com/turulomio/vuetify_rules",
+    "NPM": "https://www.npmjs.com/package/vuetify_rules"
+  },
+  "sidebarLinks": {
+    "GitHub": "https://github.com/turulomio/vuetify_rules",
+    "NPM": "https://www.npmjs.com/package/vuetify_rules"
+  }
 }

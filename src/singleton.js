@@ -100,4 +100,5 @@ class Singleton {
 
 const instance = new Singleton();
 
+export { Singleton };
 export default instance;
