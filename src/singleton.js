@@ -7,8 +7,9 @@ class Singleton {
         }
         this.language = "en";
         this.resources = {
-            en: { ...locales.en },
+            en: {},
             es: { ...locales.es },
+            fr: { ...locales.fr },
         };
         // Compatible API with i18next (singleton.i18n.t)
         this.i18n = {
@@ -19,8 +20,11 @@ class Singleton {
     }
 
     t(key, params = {}) {
-        const langResources = this.resources[this.language] || this.resources.en || {};
-        const template = langResources[key] ?? this.resources.en?.[key] ?? key;
+        const langResources = this.resources[this.language] || {};
+        let template = langResources[key];
+        if (!template || template.endsWith(' (NOT TRANSLATED)')) {
+            template = this.resources.en?.[key] ?? key;
+        }
         return template.replace(/\{\{(\w+)\}\}/g, (_, varName) => {
             return params[varName] !== undefined ? String(params[varName]) : `{{${varName}}}`;
         });

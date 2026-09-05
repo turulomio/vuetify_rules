@@ -1,8 +1,8 @@
-import en from './en/translation.json' with { type: 'json' };
-import es from './es/translation.json' with { type: 'json' };
+import es from './es.json' with { type: 'json' };
+import fr from './fr.json' with { type: 'json' };
 
-export { en, es };
+export { es, fr };
 export default {
-    en,
     es,
+    fr,
 };
