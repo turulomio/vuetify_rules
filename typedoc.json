@@ -1,9 +1,15 @@
 {
   "$schema": "https://typedoc.org/schema.json",
-  "entryPoints": ["index.d.ts"],
+  "entryPoints": [
+    "src/rules.js",
+    "src/functions.js",
+    "src/singleton.js"
+  ],
   "out": "docs_html",
   "name": "vuetify_rules",
   "readme": "README.md",
   "githubPages": true,
-  "tsconfig": "tsconfig.json"
+  "tsconfig": "tsconfig.json",
+  "categorizeByGroup": true,
+  "excludePrivate": true
 }
