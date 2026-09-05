@@ -21,6 +21,9 @@
     },
     "./singleton": {
       "import": "./src/singleton.js"
+    },
+    "./locales": {
+      "import": "./locales/index.js"
     }
   },
   "repository": {
@@ -39,15 +42,13 @@
     "url": "https://github.com/turulomio/vuetify_rules/issues"
   },
   "homepage": "https://github.com/turulomio/vuetify_rules#readme",
-  "dependencies": {
-    "i18next": "^23.11.5"
-  },
+  "dependencies": {},
   "scripts": {
     "test": "node --test test/*.test.js",
     "coverage": "node --test --experimental-test-coverage test/*.test.js",
     "start": "node index.js",
     "release": "node src/script_release.js",
-    "translate": "i18next 'src/*.js'"
+    "i18n:extract": "i18next 'src/**/*.{js,vue}'"
   },
   "devDependencies": {
     "i18next-parser": "^9.0.0",

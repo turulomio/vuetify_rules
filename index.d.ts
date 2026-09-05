@@ -8,10 +8,15 @@ export interface Base64Result {
 
 export interface SingletonInstance {
   language: string;
-  i18n: any;
+  i18n: {
+    t(key: string, params?: Record<string, any>): string;
+    changeLanguage(lang: string): Promise<void>;
+  };
+  t(key: string, params?: Record<string, any>): string;
   initI18N(): Promise<void>;
   setLanguage(lang: string): Promise<void>;
   getLanguage(): string;
+  addTranslations(lang: string, translations: Record<string, string>): void;
 }
 
 export const singleton: SingletonInstance;

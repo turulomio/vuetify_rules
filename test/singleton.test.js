@@ -36,6 +36,20 @@ describe("i18next", () => {
     // Reset back to en
     await singleton.setLanguage("en")
   })
+
+  it('addTranslations and getLanguage', async () => {
+    singleton.addTranslations('fr', {
+      'Invalid Email address': 'Adresse e-mail invalide'
+    })
+    await singleton.setLanguage('fr')
+    assert.equal(singleton.getLanguage(), 'fr')
+    assert.equal(singleton.i18n.t('Invalid Email address'), 'Adresse e-mail invalide')
+    // Falls back to en if missing in fr
+    assert.equal(singleton.i18n.t('Selection is required'), 'Selection is required')
+
+    await singleton.setLanguage('en')
+    assert.equal(singleton.getLanguage(), 'en')
+  })
 })
 
 

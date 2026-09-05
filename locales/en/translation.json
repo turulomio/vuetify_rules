@@ -9,11 +9,12 @@
   "Field must be empty or a string between 8 and {{maxdigits}} characters": "Field must be empty or a string between 8 and {{maxdigits}} characters",
   "Field must be empty or a string with at most {{maxdigits}} characters": "Field must be empty or a string with at most {{maxdigits}} characters",
   "Invalid Email address": "Invalid Email address",
+  "Must be a number greater than or equal to zero": "Must be a number greater than or equal to zero",
   "Must be a number greater than zero": "Must be a number greater than zero",
+  "Must be a number less than or equal to zero": "Must be a number less than or equal to zero",
   "Must be a number with {{maxdecimals}} decimals places at most": "Must be a number with {{maxdecimals}} decimals places at most",
   "Must be an integer number": "Must be an integer number",
   "Selection is required": "Selection is required",
-  "String must be empty or at most {{maxdigits}} characters": "String must be empty or at most {{maxdigits}} characters",
   "You must select a date": "You must select a date",
   "You must select date and time": "You must select date and time"
 }
