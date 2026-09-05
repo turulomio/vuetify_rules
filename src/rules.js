@@ -254,8 +254,10 @@ export function RulesPassword(maxdigits, required) {
 
 /**
  * Validation rules for select / autocomplete fields requiring a selection.
+ * Properly validates both single selections (disallowing null, undefined, empty string)
+ * and multiple selections (disallowing empty array []).
  *
- * @param {boolean} required - Whether a non-falsy selection is mandatory.
+ * @param {boolean} required - Whether a selection is mandatory.
  * @returns {Array<function(*): (boolean|string)>} Array of Vuetify validation rule functions.
  * @example
  * // <v-select :rules="RulesSelection(true)" :items="items" label="Category" />
@@ -263,7 +265,7 @@ export function RulesPassword(maxdigits, required) {
 export function RulesSelection(required) {
     if (required === true) {
         return [
-            (v) => !!v || i18n.t('Selection is required'),
+            v => (!isNoE(v) && (!Array.isArray(v) || v.length > 0) && (typeof v !== 'string' || v.trim().length > 0)) || i18n.t('Selection is required'),
         ];
     }
     return [];

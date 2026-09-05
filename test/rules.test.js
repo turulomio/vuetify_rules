@@ -8,6 +8,9 @@ import {
     RulesDatetimeAwareIsoString,
     RulesDateIsoString,
     RulesString,
+    RulesSelection,
+    RulesEmail,
+    RulesPassword,
 } from '../index.js';
 import assert from "assert";
 
@@ -199,5 +202,57 @@ describe("Rules", () => {
         assert.equal(validate_rules(null, RulesString(10, false), false),true);
         assert.equal(validate_rules(0, RulesString(10, false), false),false);
         assert.equal(validate_rules(new Date(), RulesString(10, false), false),false);
+    })
+
+    it('RulesSelection', () => {
+        // Valid selections when required: true
+        assert.equal(validate_rules("item", RulesSelection(true)), true);
+        assert.equal(validate_rules(0, RulesSelection(true)), true);
+        assert.equal(validate_rules(false, RulesSelection(true)), true);
+        assert.equal(validate_rules([1], RulesSelection(true)), true);
+        assert.equal(validate_rules(['apple', 'banana'], RulesSelection(true)), true);
+        assert.equal(validate_rules({ id: 1 }, RulesSelection(true)), true);
+
+        // Invalid selections when required: true (null, undefined, empty string, empty array [])
+        assert.equal(validate_rules(null, RulesSelection(true)), false);
+        assert.equal(validate_rules(undefined, RulesSelection(true)), false);
+        assert.equal(validate_rules("", RulesSelection(true)), false);
+        assert.equal(validate_rules("   ", RulesSelection(true)), false);
+        assert.equal(validate_rules([], RulesSelection(true)), false);
+        assert.equal(test_rules([], RulesSelection(true)), 'Selection is required');
+        assert.equal(test_rules(null, RulesSelection(true)), 'Selection is required');
+        assert.equal(test_rules(undefined, RulesSelection(true)), 'Selection is required');
+
+        // When required: false
+        assert.equal(validate_rules(null, RulesSelection(false)), true);
+        assert.equal(validate_rules(undefined, RulesSelection(false)), true);
+        assert.equal(validate_rules([], RulesSelection(false)), true);
+        assert.equal(validate_rules("item", RulesSelection(false)), true);
+        assert.equal(test_rules(null, RulesSelection(false)), true);
+        assert.equal(test_rules([], RulesSelection(false)), true);
+    })
+
+    it('RulesEmail', () => {
+        assert.equal(validate_rules("user@example.com", RulesEmail(true)), true);
+        assert.equal(validate_rules("invalid", RulesEmail(true)), false);
+        assert.equal(validate_rules("", RulesEmail(true)), false);
+        assert.equal(validate_rules(null, RulesEmail(true)), false);
+
+        assert.equal(validate_rules("user@example.com", RulesEmail(false)), true);
+        assert.equal(validate_rules("", RulesEmail(false)), true);
+        assert.equal(validate_rules(null, RulesEmail(false)), true);
+        assert.equal(validate_rules("invalid", RulesEmail(false)), false);
+    })
+
+    it('RulesPassword', () => {
+        assert.equal(validate_rules("12345678", RulesPassword(20, true)), true);
+        assert.equal(validate_rules("1234567", RulesPassword(20, true)), false);
+        assert.equal(validate_rules("", RulesPassword(20, true)), false);
+        assert.equal(validate_rules(null, RulesPassword(20, true)), false);
+
+        assert.equal(validate_rules("12345678", RulesPassword(20, false)), true);
+        assert.equal(validate_rules("", RulesPassword(20, false)), true);
+        assert.equal(validate_rules(null, RulesPassword(20, false)), true);
+        assert.equal(validate_rules("1234567", RulesPassword(20, false)), false);
     })
 });
