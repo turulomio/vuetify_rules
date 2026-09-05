@@ -3,7 +3,29 @@
   "version": "0.7.0",
   "description": "Rules and functions necessary to validate forms in vuetify",
   "main": "index.js",
+  "types": "index.d.ts",
   "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js"
+    },
+    "./rules": {
+      "types": "./index.d.ts",
+      "import": "./src/rules.js"
+    },
+    "./functions": {
+      "types": "./index.d.ts",
+      "import": "./src/functions.js"
+    },
+    "./singleton": {
+      "import": "./src/singleton.js"
+    },
+    "./locales": {
+      "import": "./locales/index.js"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/turulomio/vuetify_rules.git"
@@ -20,22 +42,18 @@
     "url": "https://github.com/turulomio/vuetify_rules/issues"
   },
   "homepage": "https://github.com/turulomio/vuetify_rules#readme",
-  "dependencies": {
-    "i18next": "^23.11.5",
-    "lodash-es": "^4.17.21",
-    "moment-timezone": "^0.5.45"
-  },
+  "dependencies": {},
   "scripts": {
-    "test": "mocha",
-    "coverage": "c8 mocha; c8 report -r html",
+    "test": "node --test test/*.test.js",
+    "coverage": "node --test --experimental-test-coverage test/*.test.js",
     "start": "node index.js",
     "release": "node src/script_release.js",
-    "translate": "i18next 'src/*.js'"
+    "i18n:extract": "i18next 'src/**/*.{js,vue}'",
+    "docs:build": "typedoc"
   },
   "devDependencies": {
-    "c8": "^10.1.2",
     "i18next-parser": "^9.0.0",
-    "mocha": "^10.4.0",
-    "npm-check-updates": "^16.14.20"
+    "npm-check-updates": "^16.14.20",
+    "typedoc": "^0.26.0"
   }
 }

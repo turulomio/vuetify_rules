@@ -1,3 +1,4 @@
+import { describe, it } from 'node:test';
 import {
     RulesInteger,
     RulesFloat,
@@ -8,7 +9,7 @@ import {
     RulesDateIsoString,
     RulesString,
 } from '../index.js';
-import assert from "assert"
+import assert from "assert";
 
 function validate_rules(value, rules, log=false){
   var r=true

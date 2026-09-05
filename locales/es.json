@@ -9,11 +9,12 @@
   "Field must be empty or a string between 8 and {{maxdigits}} characters": "El campo puede estar vacío o ser una cadena entre 8 y {{maxdigits}} caracteres",
   "Field must be empty or a string with at most {{maxdigits}} characters": "El campo puede estar vacío o ser una cadena con {{maxdigits}} caracteres como mucho",
   "Invalid Email address": "Dirección de correo electrónico inválida",
+  "Must be a number greater than or equal to zero": "Debe ser un número mayor o igual que cero",
   "Must be a number greater than zero": "Debe ser un número mayor que cero",
+  "Must be a number less than or equal to zero": "Debe ser un número menor o igual que cero",
   "Must be a number with {{maxdecimals}} decimals places at most": "Debe ser un número con {{maxdecimals}} decimales como mucho",
   "Must be an integer number": "Debe ser un número entero",
   "Selection is required": "Se requiere una selección",
-  "String must be empty or at most {{maxdigits}} characters": "La cadena puede estar vací o tener {{maxdigits}} caracteres como mucho",
   "You must select a date": "Debe seleccionar una fecha",
   "You must select date and time": "Debe seleccionar una fecha y una hora"
 }

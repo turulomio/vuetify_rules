@@ -1,0 +1,8 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["index.d.ts"],
+  "out": "docs_html",
+  "name": "vuetify_rules",
+  "readme": "README.md",
+  "githubPages": true
+}

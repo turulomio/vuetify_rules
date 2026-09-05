@@ -1,93 +1,103 @@
-import i18next from "i18next";
+import locales from '../locales/index.js';
 
+/**
+ * Singleton class managing localization, language state, and message translation.
+ */
 class Singleton {
+    /**
+     * Initializes the Singleton instance. Returns existing instance if already created.
+     */
     constructor() {
-        if (!Singleton.instance) {
-            Singleton.instance = this;
-            this.language="en"
-            this.i18n=i18next
+        if (Singleton.instance) {
             return Singleton.instance;
-
-        } else {
-            console.log("Singleton not created")
-            return null
         }
+        /** @type {string} Current active language code */
+        this.language = "en";
+        /** @type {Record<string, Record<string, string>>} Loaded translation resources by language */
+        this.resources = {
+            en: {},
+            es: { ...locales.es },
+            fr: { ...locales.fr },
+        };
+        /**
+         * Backward-compatible interface mimicking i18next
+         * @type {{ t: function(string, Record<string, *>=): string, changeLanguage: function(string): Promise<void> }}
+         */
+        this.i18n = {
+            t: this.t.bind(this),
+            changeLanguage: this.setLanguage.bind(this),
+        };
+        Singleton.instance = this;
     }
-  
-    async initI18N(){
-        await this.i18n
-        .init({
-            initImmediate: true,
-            debug: false, //En true se ve que estan cargadas las traducciones, Usar para ver en navegador  
-            lng: "en",
-            fallbackLng: "en",
-            resources: {
-                en: {
-                  translation: {
-                    "Email is required": "Email is required",
-                    "Field can be empty or a number with {{maxdigits}} digits at most": "Field can be empty or a number with {{maxdigits}} digits at most",
-                    "Field must be a number with {{maxdigits}} digits at most": "Field must be a number with {{maxdigits}} digits at most",
-                    "Field must be a string between 8 and {{maxdigits}} characters": "Field must be a string between 8 and {{maxdigits}} characters",
-                    "Field must be a string representing a date in iso format": "Field must be a string representing a date in iso format",
-                    "Field must be a string representing a date time with timezone in iso format": "Field must be a string representing a date time with timezone in iso format",
-                    "Field must be a string with at most {{maxdigits}} characters": "Field must be a string with at most {{maxdigits}} characters",
-                    "Field must be empty or a string between 8 and {{maxdigits}} characters": "Field must be empty or a string between 8 and {{maxdigits}} characters",
-                    "Field must be empty or a string with at most {{maxdigits}} characters": "Field must be empty or a string with at most {{maxdigits}} characters",
-                    "Invalid Email address": "Invalid Email address",
-                    "Must be a number greater than zero": "Must be a number greater than zero",
-                    "Must be a number with {{maxdecimals}} decimals places at most": "Must be a number with {{maxdecimals}} decimals places at most",
-                    "Must be an integer number": "Must be an integer number",
-                    "Selection is required": "Selection is required",
-                    "String must be empty or at most {{maxdigits}} characters": "String must be empty or at most {{maxdigits}} characters",
-                    "You must select a date": "You must select a date",
-                    "You must select date and time": "You must select date and time"
-                  }
-                  
-                },
-                es: {
-                  translation: {
-                    "Email is required": "Se requiere correo electrónico",
-                    "Field can be empty or a number with {{maxdigits}} digits at most": "El campo puede estar vacío o ser un número con {{maxdigits}} dígitos como mucho",
-                    "Field must be a number with {{maxdigits}} digits at most": "El campo debe ser un número con {{maxdigits}} dígitos como mucho",
-                    "Field must be a string between 8 and {{maxdigits}} characters": "El campo debe ser una cadena entre 8 y {{maxdigits}} caracteres",
-                    "Field must be a string representing a date in iso format": "El campo debe ser una cadena representando una fecha en formato iso",
-                    "Field must be a string representing a date time with timezone in iso format": "El campo debe ser una cadena representando una fecha y una hora en formato iso",
-                    "Field must be a string with at most {{maxdigits}} characters": "El campo debe ser una cadena con {{maxdigits}} caracteres como mucho",
-                    "Field must be empty or a string between 8 and {{maxdigits}} characters": "El campo puede estar vacío o ser una cadena entre 8 y {{maxdigits}} caracteres",
-                    "Field must be empty or a string with at most {{maxdigits}} characters": "El campo puede estar vacío o ser una cadena con {{maxdigits}} caracteres como mucho",
-                    "Invalid Email address": "Dirección de correo electrónico inválida",
-                    "Must be a number greater than zero": "Debe ser un número mayor que cero",
-                    "Must be a number with {{maxdecimals}} decimals places at most": "Debe ser un número con {{maxdecimals}} decimales como mucho",
-                    "Must be an integer number": "Debe ser un número entero",
-                    "Selection is required": "Se requiere una selección",
-                    "String must be empty or at most {{maxdigits}} characters": "La cadena puede estar vací o tener {{maxdigits}} caracteres como mucho",
-                    "You must select a date": "Debe seleccionar una fecha",
-                    "You must select date and time": "Debe seleccionar una fecha y una hora"
-                  }
-                  
-                }
-              }, 
-            interpolation: {
-              escapeValue: false // React already safes from XSS
-            }
+
+    /**
+     * Translates a message key for the active language with variable interpolation.
+     * If the translation is missing or untranslated, falls back to the English key.
+     *
+     * @param {string} key - The English template key (e.g. 'Field must have {{maxdigits}} digits').
+     * @param {Record<string, *>} [params={}] - Key-value map of variables to interpolate into `{{var}}`.
+     * @returns {string} The translated and interpolated text.
+     * @example
+     * singleton.t('Field must be a number with {{maxdigits}} digits at most', { maxdigits: 5 });
+     */
+    t(key, params = {}) {
+        const langResources = this.resources[this.language] || {};
+        let template = langResources[key];
+        if (!template || template.endsWith(' (NOT TRANSLATED)')) {
+            template = this.resources.en?.[key] ?? key;
+        }
+        return template.replace(/\{\{(\w+)\}\}/g, (_, varName) => {
+            return params[varName] !== undefined ? String(params[varName]) : `{{${varName}}}`;
         });
     }
-    // Example method
-    async setLanguage(lang) {
-        this.language=lang
-        await this.i18n.changeLanguage(this.language)
-        console.log("VuetifyRules changed language to: ", this.language)
+
+    /**
+     * Initializes localization asynchronously (kept for backward compatibility).
+     *
+     * @returns {Promise<void>}
+     */
+    async initI18N() {
+        return Promise.resolve();
     }
-  
+
+    /**
+     * Changes the current active language.
+     *
+     * @param {string} lang - Language code (e.g. 'es', 'en', 'fr').
+     * @returns {Promise<void>}
+     * @example
+     * await singleton.setLanguage('es');
+     */
+    async setLanguage(lang) {
+        this.language = lang;
+        return Promise.resolve();
+    }
+
+    /**
+     * Returns the currently active language code.
+     *
+     * @returns {string} Current language code (e.g. 'en', 'es').
+     */
     getLanguage() {
-      return this.language;
+        return this.language;
+    }
+
+    /**
+     * Registers or merges external translations for a specific language catalog.
+     *
+     * @param {string} lang - Target language code.
+     * @param {Record<string, string>} translations - Dictionary of key-value translation strings.
+     * @example
+     * singleton.addTranslations('de', { 'Must be an integer number': 'Muss eine ganze Zahl sein' });
+     */
+    addTranslations(lang, translations) {
+        this.resources[lang] = {
+            ...(this.resources[lang] || {}),
+            ...translations,
+        };
     }
 }
-  
+
 const instance = new Singleton();
-// Initialize the singleton asynchronously to avoid top level await
-instance.initI18N().then(() => {
-    console.log("VuetifyRules language started with en")
-});
 
 export default instance;
