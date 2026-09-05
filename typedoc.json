@@ -13,11 +13,15 @@
   "categorizeByGroup": true,
   "excludePrivate": true,
   "navigationLinks": {
-    "GitHub": "https://github.com/turulomio/vuetify_rules",
-    "NPM": "https://www.npmjs.com/package/vuetify_rules"
+    "Functions": "modules/functions.html",
+    "Rules": "modules/rules.html",
+    "Singleton": "modules/singleton.html",
+    "GitHub": "https://github.com/turulomio/vuetify_rules"
   },
   "sidebarLinks": {
-    "GitHub": "https://github.com/turulomio/vuetify_rules",
-    "NPM": "https://www.npmjs.com/package/vuetify_rules"
+    "Functions": "modules/functions.html",
+    "Rules": "modules/rules.html",
+    "Singleton": "modules/singleton.html",
+    "GitHub": "https://github.com/turulomio/vuetify_rules"
   }
 }
