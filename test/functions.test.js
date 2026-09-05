@@ -4,6 +4,13 @@ import {
   aoo_to_string,
   aoo_sum,
   aoo_maxdecimals,
+  aoo_to_array,
+  aoo_average_ponderated,
+  array_from_map,
+  age_in_a_date,
+  percentage_generic_string,
+  percentage_generic_html,
+  round,
   ifnullempty,
   isDateIsoString,
   isNoE,
@@ -161,6 +168,49 @@ describe("Functions", () => {
     assert.equal(aoo_sum(aoo, "a"), 6)
     assert.equal(aoo_sum([], "a"), 0)
     assert.equal(aoo_sum(aoo, "c", 1), 6.4)
+  })
+
+  it('aoo_to_array', () => {
+    assert.deepEqual(aoo_to_array(aoo, "a"), [3, 2, 1])
+  })
+
+  it('aoo_average_ponderated', () => {
+    const list = [
+      { grade: 8, weight: 2 },
+      { grade: 10, weight: 3 }
+    ]
+    // (8*2 + 10*3) / (2+3) = 46 / 5 = 9.2
+    assert.equal(aoo_average_ponderated(list, "grade", "weight"), 9.2)
+    assert.equal(aoo_average_ponderated([], "grade", "weight"), 0)
+  })
+
+  it('array_from_map', () => {
+    const map = new Map([['a', 1], ['b', 2]])
+    assert.deepEqual(array_from_map(map), [1, 2])
+  })
+
+  it('age_in_a_date', () => {
+    assert.equal(age_in_a_date("2000-05-15", "2020-05-15"), 20)
+    assert.equal(age_in_a_date("2000-05-15", "2020-05-14"), 19)
+    assert.equal(age_in_a_date("2000-05-15", "2020-05-16"), 20)
+  })
+
+  it('percentage_generic_string', () => {
+    assert.equal(percentage_generic_string(0.255, "en", 2), "25.50 %")
+    assert.equal(percentage_generic_string(null, "en", 2), "- - - %")
+    assert.equal(percentage_generic_string(NaN, "en", 2), "- - - %")
+  })
+
+  it('percentage_generic_html', () => {
+    assert.equal(percentage_generic_html(0.255, "en", 2), "<span>25.50 %</span>")
+    assert.equal(percentage_generic_html(-0.15, "en", 2), "<span class='vuered'>-15.00 %</span>")
+    assert.equal(percentage_generic_html(null, "en", 2), "- - - %")
+  })
+
+  it('round', () => {
+    assert.equal(round(1.125, 2), 1.13)
+    assert.equal(round(1.124, 2), 1.12)
+    assert.equal(round(10.5, 0), 11)
   })
 
 });

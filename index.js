@@ -22,6 +22,7 @@ import {
   isDateIsoString,
   isDatetimeAwareIsoString,
   isNoE,
+  isNumber,
   isNumberWithRequired,
   isNumberMaxDigitsWithRequired,
   countDecimals,
@@ -30,6 +31,7 @@ import {
   parseNumber,
   percentage_generic_string,
   percentage_generic_html,
+  round,
   string_to_aoi,
   yesterday_in_isostring,
 } from "./src/functions.js";
@@ -70,6 +72,7 @@ export {
   isDateIsoString,
   isDatetimeAwareIsoString,
   isNoE,
+  isNumber,
   isNumberWithRequired,
   isNumberMaxDigitsWithRequired,
   countDecimals,
@@ -78,6 +81,7 @@ export {
   parseNumber,
   percentage_generic_string,
   percentage_generic_html,
+  round,
   string_to_aoi,
   yesterday_in_isostring,
 
