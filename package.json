@@ -42,7 +42,6 @@
     "url": "https://github.com/turulomio/vuetify_rules/issues"
   },
   "homepage": "https://github.com/turulomio/vuetify_rules#readme",
-  "dependencies": {},
   "scripts": {
     "test": "node --test test/*.test.js",
     "coverage": "node --test --experimental-test-coverage test/*.test.js",
@@ -52,8 +51,7 @@
     "docs:build": "typedoc"
   },
   "devDependencies": {
-    "i18next-parser": "^9.0.0",
-    "npm-check-updates": "^16.14.20",
-    "typedoc": "^0.26.0"
+    "npm-check-updates": "^23.1.0",
+    "typedoc": "^0.28.20"
   }
 }
