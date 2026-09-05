@@ -4,5 +4,6 @@
   "out": "docs_html",
   "name": "vuetify_rules",
   "readme": "README.md",
-  "githubPages": true
+  "githubPages": true,
+  "tsconfig": "tsconfig.json"
 }
