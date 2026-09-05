@@ -49,4 +49,24 @@ Librería de reglas de validación para formularios de Vuetify y funciones auxil
 - `npm test`: Ejecuta todos los tests con el test runner nativo de Node.js (`node --test test/*.test.js`).
 - `npm run coverage`: Ejecuta los tests calculando la cobertura de código (`--experimental-test-coverage`).
 - `npm run i18n:extract`: Extrae cadenas de `src/` a los catálogos en `locales/*.json`.
+- `npm run docs:build`: Genera la web estática de documentación de la API con TypeDoc a partir de `index.d.ts` y las anotaciones JSDoc.
 - `npm run release`: Genera una nueva versión y actualiza la documentación/etiquetas del proyecto.
+
+---
+
+## Generación y Publicación de Documentación
+
+### Estándar JSDoc / TSDoc
+- Todo el código en `src/functions.js`, `src/rules.js`, `src/singleton.js` y las definiciones en `index.d.ts` están documentados exhaustivamente con anotaciones JSDoc (`@param`, `@returns`, `@example`, `@template`, `@deprecated`).
+- Esta documentación proporciona autocompletado y descripciones enriquecidas directamente en los editores de código (VS Code, WebStorm).
+
+### Web de Documentación con TypeDoc
+- Configuración: `typedoc.json`.
+- Comando: `npm run docs:build`.
+- Genera un sitio web estático responsivo en la carpeta `docs_html/` con buscador en tiempo real, índices de funciones y reglas, temas claro/oscuro e integración con el `README.md`.
+
+### Despliegue Continuo con GitHub Action
+- Workflow: `.github/workflows/documentation.yml`.
+- Se ejecuta automáticamente ante cada `push` a la rama `main` o de forma manual (`workflow_dispatch`).
+- Compila la documentación con TypeDoc y la despliega directamente en **GitHub Pages** utilizando las acciones oficiales `actions/upload-pages-artifact@v3` y `actions/deploy-pages@v4`.
+

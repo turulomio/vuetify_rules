@@ -19,6 +19,16 @@ import singleton from './singleton.js';
 
 const i18n = singleton.i18n;
 
+/**
+ * Validation rules for integer fields in Vuetify forms.
+ *
+ * @param {number} maxdigits - Maximum number of allowed digits.
+ * @param {boolean} required - Whether the field is mandatory.
+ * @returns {Array<function(*): (boolean|string)>} Array of Vuetify validation rule functions.
+ * @example
+ * // In Vue template:
+ * // <v-text-field :rules="RulesInteger(6, true)" label="Age" />
+ */
 export function RulesInteger(maxdigits, required) {
     if (required === false) {
         return [
@@ -32,8 +42,16 @@ export function RulesInteger(maxdigits, required) {
     ];
 }
 
-// If required===true must be 0 or a number
-// If required===false can be null
+/**
+ * Validation rules for floating-point number fields in Vuetify forms.
+ *
+ * @param {number} maxdigits - Maximum number of allowed digits (integer + decimals).
+ * @param {boolean} required - Whether the field is mandatory. If false, empty/null values are permitted.
+ * @param {number} maxdecimals - Maximum number of allowed decimal places.
+ * @returns {Array<function(*): (boolean|string)>} Array of Vuetify validation rule functions.
+ * @example
+ * // <v-text-field :rules="RulesFloat(8, false, 2)" label="Price" />
+ */
 export function RulesFloat(maxdigits, required, maxdecimals) {
     if (required === false) {
         return [
@@ -47,7 +65,16 @@ export function RulesFloat(maxdigits, required, maxdecimals) {
     ];
 }
 
-// Float Greater Than Zero (> 0)
+/**
+ * Validation rules for numbers strictly greater than zero (> 0).
+ *
+ * @param {number} maxdigits - Maximum allowed digits.
+ * @param {boolean} required - Whether the field is mandatory.
+ * @param {number} maxdecimals - Maximum allowed decimal places.
+ * @returns {Array<function(*): (boolean|string)>} Array of Vuetify validation rule functions.
+ * @example
+ * // <v-text-field :rules="RulesFloatGZ(6, true, 2)" label="Positive Amount" />
+ */
 export function RulesFloatGZ(maxdigits, required, maxdecimals) {
     if (required === false) {
         return [
@@ -63,7 +90,16 @@ export function RulesFloatGZ(maxdigits, required, maxdecimals) {
     ];
 }
 
-// Number Greater Than or Equal to Zero (>= 0)
+/**
+ * Validation rules for numbers greater than or equal to zero (>= 0).
+ *
+ * @param {number} maxdigits - Maximum allowed digits.
+ * @param {boolean} required - Whether the field is mandatory.
+ * @param {number} maxdecimals - Maximum allowed decimal places.
+ * @returns {Array<function(*): (boolean|string)>} Array of Vuetify validation rule functions.
+ * @example
+ * // <v-text-field :rules="RulesFloatGEZ(6, true, 2)" label="Non-negative Amount" />
+ */
 export function RulesFloatGEZ(maxdigits, required, maxdecimals) {
     if (required === false) {
         return [
@@ -79,7 +115,16 @@ export function RulesFloatGEZ(maxdigits, required, maxdecimals) {
     ];
 }
 
-// Number Less Than or Equal to Zero (<= 0)
+/**
+ * Validation rules for numbers less than or equal to zero (<= 0).
+ *
+ * @param {number} maxdigits - Maximum allowed digits.
+ * @param {boolean} required - Whether the field is mandatory.
+ * @param {number} maxdecimals - Maximum allowed decimal places.
+ * @returns {Array<function(*): (boolean|string)>} Array of Vuetify validation rule functions.
+ * @example
+ * // <v-text-field :rules="RulesFloatLEZ(6, true, 2)" label="Discount Amount" />
+ */
 export function RulesFloatLEZ(maxdigits, required, maxdecimals) {
     if (required === false) {
         return [
@@ -95,6 +140,14 @@ export function RulesFloatLEZ(maxdigits, required, maxdecimals) {
     ];
 }
 
+/**
+ * Validation rules for calendar dates in ISO format ('YYYY-MM-DD').
+ *
+ * @param {boolean} required - Whether selecting a date is mandatory.
+ * @returns {Array<function(*): (boolean|string)>} Array of Vuetify validation rule functions.
+ * @example
+ * // <v-text-field :rules="RulesDateIsoString(true)" label="Birthdate" />
+ */
 export function RulesDateIsoString(required) {
     if (required === true) {
         return [
@@ -106,6 +159,14 @@ export function RulesDateIsoString(required) {
     ];
 }
 
+/**
+ * Validation rules for timezone-aware UTC datetime strings in ISO format ('YYYY-MM-DDTHH:mm:ssZ').
+ *
+ * @param {boolean} required - Whether selecting a datetime is mandatory.
+ * @returns {Array<function(*): (boolean|string)>} Array of Vuetify validation rule functions.
+ * @example
+ * // <v-text-field :rules="RulesDatetimeAwareIsoString(true)" label="Event Timestamp" />
+ */
 export function RulesDatetimeAwareIsoString(required) {
     if (required === true) {
         return [
@@ -117,6 +178,13 @@ export function RulesDatetimeAwareIsoString(required) {
     ];
 }
 
+/**
+ * Validation rules for datetime fields.
+ *
+ * @deprecated Use RulesDatetimeAwareIsoString instead.
+ * @param {boolean} required - Whether mandatory.
+ * @returns {Array<function(*): (boolean|string)>} Array of Vuetify validation rule functions.
+ */
 export function RulesDatetime(required) {
     console.warn("Deprecated: RulesDatetime should change to RulesDatetimeAwareIsoString");
     if (required === false) {
@@ -127,6 +195,13 @@ export function RulesDatetime(required) {
     ];
 }
 
+/**
+ * Validation rules for date fields.
+ *
+ * @deprecated Use RulesDateIsoString instead.
+ * @param {boolean} required - Whether mandatory.
+ * @returns {Array<function(*): (boolean|string)>} Array of Vuetify validation rule functions.
+ */
 export function RulesDate(required) {
     console.warn("Deprecated: RulesDate should change to RulesDateIsoString");
     if (required === false) {
@@ -137,6 +212,15 @@ export function RulesDate(required) {
     ];
 }
 
+/**
+ * Validation rules for general string fields with maximum character length.
+ *
+ * @param {number} maxdigits - Maximum allowed characters.
+ * @param {boolean} required - Whether mandatory (if true, minimum 1 character required).
+ * @returns {Array<function(*): (boolean|string)>} Array of Vuetify validation rule functions.
+ * @example
+ * // <v-text-field :rules="RulesString(50, true)" label="Name" />
+ */
 export function RulesString(maxdigits, required) {
     if (required === true) {
         return [
@@ -148,6 +232,15 @@ export function RulesString(maxdigits, required) {
     ];
 }
 
+/**
+ * Validation rules for password fields (minimum 8 characters, maximum defined by maxdigits).
+ *
+ * @param {number} maxdigits - Maximum allowed characters.
+ * @param {boolean} required - Whether mandatory.
+ * @returns {Array<function(*): (boolean|string)>} Array of Vuetify validation rule functions.
+ * @example
+ * // <v-text-field :rules="RulesPassword(32, true)" type="password" label="Password" />
+ */
 export function RulesPassword(maxdigits, required) {
     if (required === true) {
         return [
@@ -159,6 +252,14 @@ export function RulesPassword(maxdigits, required) {
     ];
 }
 
+/**
+ * Validation rules for select / autocomplete fields requiring a selection.
+ *
+ * @param {boolean} required - Whether a non-falsy selection is mandatory.
+ * @returns {Array<function(*): (boolean|string)>} Array of Vuetify validation rule functions.
+ * @example
+ * // <v-select :rules="RulesSelection(true)" :items="items" label="Category" />
+ */
 export function RulesSelection(required) {
     if (required === true) {
         return [
@@ -168,6 +269,14 @@ export function RulesSelection(required) {
     return [];
 }
 
+/**
+ * Validation rules for email address fields with regex format validation.
+ *
+ * @param {boolean} required - Whether mandatory.
+ * @returns {Array<function(*): (boolean|string)>} Array of Vuetify validation rule functions.
+ * @example
+ * // <v-text-field :rules="RulesEmail(true)" label="Email address" />
+ */
 export function RulesEmail(required) {
     if (required === false) {
         return [

@@ -48,10 +48,12 @@
     "coverage": "node --test --experimental-test-coverage test/*.test.js",
     "start": "node index.js",
     "release": "node src/script_release.js",
-    "i18n:extract": "i18next 'src/**/*.{js,vue}'"
+    "i18n:extract": "i18next 'src/**/*.{js,vue}'",
+    "docs:build": "typedoc"
   },
   "devDependencies": {
     "i18next-parser": "^9.0.0",
-    "npm-check-updates": "^16.14.20"
+    "npm-check-updates": "^16.14.20",
+    "typedoc": "^0.26.0"
   }
 }
