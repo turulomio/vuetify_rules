@@ -80,14 +80,14 @@ export function RulesFloatGEZ (maxdigits, required, maxdecimals){
     var r
     if (required==false){
         r= [
-            v => (isNoE(v) || isNumberMaxDigitsWithRequired(v,required,maxdigits)) ||i18n.t('Field can be empty or a number with {{maxdigits}} digits at most',{maxdigits}),
-            v => (isNoE(v) || isNumber(v) && v>=0) || i18n.t('Must be a number greater than zero'),
+            v => (isNoE(v) || isNumberMaxDigitsWithRequired(v,required,maxdigits)) || i18n.t('Field can be empty or a number with {{maxdigits}} digits at most',{maxdigits}),
+            v => (isNoE(v) || isNumber(v) && v>=0) || i18n.t('Must be a number greater than or equal to zero'),
             v => (isNoE(v) || isNumber(v) && countDecimals(v)<=maxdecimals) || i18n.t('Must be a number with {{maxdecimals}} decimals places at most', {maxdecimals}),
         ]
     } else { // required==true
         r= [
             v => isNumberMaxDigitsWithRequired(v,required,maxdigits)|| i18n.t('Field must be a number with {{maxdigits}} digits at most',{maxdigits}),
-            v => v>=0 || i18n.t('Must be a number greater than zero'),
+            v => v>=0 || i18n.t('Must be a number greater than or equal to zero'),
             v => countDecimals(v)<=maxdecimals || i18n.t('Must be a number with {{maxdecimals}} decimals places at most', {maxdecimals}),
         ]
     }
@@ -98,13 +98,13 @@ export function RulesFloatLEZ(maxdigits, required, maxdecimals){
     if (required==false){
         r= [
             v => (isNoE(v) || isNumberMaxDigitsWithRequired(v,required,maxdigits)) || i18n.t('Field can be empty or a number with {{maxdigits}} digits at most',{maxdigits}),
-            v => (isNoE(v) || isNumber(v) && v<=0) || i18n.t('Must be a number greater than zero'),
+            v => (isNoE(v) || isNumber(v) && v<=0) || i18n.t('Must be a number less than or equal to zero'),
             v => (isNoE(v) || isNumber(v) && countDecimals(v)<=maxdecimals) || i18n.t('Must be a number with {{maxdecimals}} decimals places at most', {maxdecimals}),
         ]
     } else { // required==true
         r= [
             v => isNumberMaxDigitsWithRequired(v,required,maxdigits)|| i18n.t('Field must be a number with {{maxdigits}} digits at most',{maxdigits}),
-            v => v<=0 || i18n.t('Must be a number greater than zero'),
+            v => v<=0 || i18n.t('Must be a number less than or equal to zero'),
             v => countDecimals(v)<=maxdecimals || i18n.t('Must be a number with {{maxdecimals}} decimals places at most', {maxdecimals}),
         ]
     }
@@ -112,15 +112,14 @@ export function RulesFloatLEZ(maxdigits, required, maxdecimals){
 }
 
 export function RulesDateIsoString(required){
-    var error=i18n.t("Field must be a string representing a date in iso format")
     var r
     if (required==true){
         r= [
-            v => (!isNoE(v) && isDateIsoString(v))|| error,
+            v => (!isNoE(v) && isDateIsoString(v)) || i18n.t("Field must be a string representing a date in iso format"),
         ]
     } else {
         r= [
-            v => (isNoE(v) || isDateIsoString(v))|| error,
+            v => (isNoE(v) || isDateIsoString(v)) || i18n.t("Field must be a string representing a date in iso format"),
         ]
     }
 
@@ -129,15 +128,14 @@ export function RulesDateIsoString(required){
 
 
 export function RulesDatetimeAwareIsoString(required){
-    var error=i18n.t("Field must be a string representing a date time with timezone in iso format")
     var r
     if (required==true){
         r= [
-            v => (!isNoE(v) && isDatetimeAwareIsoString(v))|| error,
+            v => (!isNoE(v) && isDatetimeAwareIsoString(v)) || i18n.t("Field must be a string representing a date time with timezone in iso format"),
         ]
     } else {
         r= [
-            v => (isNoE(v) || isDatetimeAwareIsoString(v))|| error,
+            v => (isNoE(v) || isDatetimeAwareIsoString(v)) || i18n.t("Field must be a string representing a date time with timezone in iso format"),
         ]
     }
 
@@ -171,18 +169,14 @@ export function RulesDate(required){
 
 // Si required=true no puede ser ni null ni ""
 export function RulesString(maxdigits,required){
-    var error_required=i18n.t("Field must be a string with at most {{maxdigits}} characters", {maxdigits})
-    var error_not_required=i18n.t("Field must be empty or a string with at most {{maxdigits}} characters", {maxdigits})
     var r
-
-    i18n.t("String must be empty or at most {{maxdigits}} characters", {maxdigits})
     if (required==true){
         r= [
-            v => (!isNoE(v) && isStringWithMaxDigits(v,1,maxdigits))|| error_required,
+            v => (!isNoE(v) && isStringWithMaxDigits(v,1,maxdigits)) || i18n.t("Field must be a string with at most {{maxdigits}} characters", {maxdigits}),
         ]
     } else {
         r= [
-            v => (isNoE(v) || isStringWithMaxDigits(v,0,maxdigits))|| error_not_required,
+            v => (isNoE(v) || isStringWithMaxDigits(v,0,maxdigits)) || i18n.t("Field must be empty or a string with at most {{maxdigits}} characters", {maxdigits}),
         ]
     }
     return r
@@ -190,16 +184,14 @@ export function RulesString(maxdigits,required){
 
 // Si required=true no puede ser ni null ni ""
 export function RulesPassword(maxdigits,required){
-    var error_required=i18n.t("Field must be a string between 8 and {{maxdigits}} characters", {maxdigits})
-    var error_not_required=i18n.t("Field must be empty or a string between 8 and {{maxdigits}} characters", {maxdigits})
     var r
     if (required==true){
         r= [
-            v => (!isNoE(v) && isStringWithMaxDigits(v,8,maxdigits))|| error_required,
+            v => (!isNoE(v) && isStringWithMaxDigits(v,8,maxdigits)) || i18n.t("Field must be a string between 8 and {{maxdigits}} characters", {maxdigits}),
         ]
     } else {
         r= [
-            v => (isNoE(v) || isStringWithMaxDigits(v,8,maxdigits))|| error_not_required,
+            v => (isNoE(v) || isStringWithMaxDigits(v,8,maxdigits)) || i18n.t("Field must be empty or a string between 8 and {{maxdigits}} characters", {maxdigits}),
         ]
     }
     return r

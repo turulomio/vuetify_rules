@@ -127,7 +127,6 @@ export function aoo_to_string(l, key, separator=", "){
     var s=""
     l.forEach(o => {
         s=s+o[key].toString() + separator
-        console.log(o)
     })
     return s.slice(0,-separator.length)
 }
@@ -188,7 +187,7 @@ export function aoo_maxdecimals(lo, key){
 // Sums values in a lo respecting the max number of decimals
 export function aoo_sum(lo,key,decimals=null){
     if (lo.length==0) return 0
-    if (decimals==null) decimals=listobjects_maxdecimals(lo,key)
+    if (decimals==null) decimals=aoo_maxdecimals(lo,key)
     return round(lo.reduce((accum,item) => accum + item[key], 0), decimals)
 }
 

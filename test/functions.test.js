@@ -1,5 +1,9 @@
+import { describe, it, beforeEach } from 'node:test';
+import assert from "assert";
 import {
   aoo_to_string,
+  aoo_sum,
+  aoo_maxdecimals,
   ifnullempty,
   isDateIsoString,
   isNoE,
@@ -12,12 +16,6 @@ import {
   parseNumber,
   yesterday_in_isostring
 }  from '../src/functions.js';
-
-
-
-//Coverage of the test not of the module
-
-import assert from "assert"
 
 describe("Functions", () => {
 
@@ -150,6 +148,19 @@ describe("Functions", () => {
 
   it('aoo_to_string', () => {
     assert.equal( aoo_to_string(aoo, "a"), "3, 2, 1" , "String is not generated correctly")    
+  })
+
+  it('aoo_maxdecimals', () => {
+    assert.equal(aoo_maxdecimals(aoo, "c"), 2)
+    assert.equal(aoo_maxdecimals([{ a: 1.1234 }, { a: 2.1 }], "a"), 4)
+  })
+
+  it('aoo_sum', () => {
+    // Tests auto maxdecimals resolution (default decimals=null)
+    assert.equal(aoo_sum(aoo, "c"), 6.36)
+    assert.equal(aoo_sum(aoo, "a"), 6)
+    assert.equal(aoo_sum([], "a"), 0)
+    assert.equal(aoo_sum(aoo, "c", 1), 6.4)
   })
 
 });

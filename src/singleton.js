@@ -35,6 +35,8 @@ class Singleton {
                     "Field must be empty or a string with at most {{maxdigits}} characters": "Field must be empty or a string with at most {{maxdigits}} characters",
                     "Invalid Email address": "Invalid Email address",
                     "Must be a number greater than zero": "Must be a number greater than zero",
+                    "Must be a number greater than or equal to zero": "Must be a number greater than or equal to zero",
+                    "Must be a number less than or equal to zero": "Must be a number less than or equal to zero",
                     "Must be a number with {{maxdecimals}} decimals places at most": "Must be a number with {{maxdecimals}} decimals places at most",
                     "Must be an integer number": "Must be an integer number",
                     "Selection is required": "Selection is required",
@@ -57,10 +59,12 @@ class Singleton {
                     "Field must be empty or a string with at most {{maxdigits}} characters": "El campo puede estar vacío o ser una cadena con {{maxdigits}} caracteres como mucho",
                     "Invalid Email address": "Dirección de correo electrónico inválida",
                     "Must be a number greater than zero": "Debe ser un número mayor que cero",
+                    "Must be a number greater than or equal to zero": "Debe ser un número mayor o igual que cero",
+                    "Must be a number less than or equal to zero": "Debe ser un número menor o igual que cero",
                     "Must be a number with {{maxdecimals}} decimals places at most": "Debe ser un número con {{maxdecimals}} decimales como mucho",
                     "Must be an integer number": "Debe ser un número entero",
                     "Selection is required": "Se requiere una selección",
-                    "String must be empty or at most {{maxdigits}} characters": "La cadena puede estar vací o tener {{maxdigits}} caracteres como mucho",
+                    "String must be empty or at most {{maxdigits}} characters": "La cadena puede estar vacía o tener {{maxdigits}} caracteres como mucho",
                     "You must select a date": "Debe seleccionar una fecha",
                     "You must select date and time": "Debe seleccionar una fecha y una hora"
                   }
